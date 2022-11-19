@@ -11,8 +11,8 @@ t_map	ft_read_map(char *namefile)
 		maptoload.rowscols = ft_rows_cols_check(fd);
 		close(fd);
 		fd = open(namefile, O_RDWR);
-		maptoload.mapdots = ft_load_mapdots(fd, maptoload.rowscols.row, \
-				maptoload.rowscols.col);
+		maptoload.mapdots = ft_load_mapdots(fd, maptoload.rowscols.rowx, \
+				maptoload.rowscols.coly);
 	}
 	else
 	{
@@ -42,8 +42,8 @@ t_dot	**ft_load_mapdots(int fd, int rows, int cols)
 		y = -1;
 		while (++y < cols)
 		{
-			dotstoload[x][y].h = ft_atoi(lines[y]);
-			dotstoload[x][y].dotcolor = 0;
+			dotstoload[x][y].hz = ft_atoi(lines[y]);
+			dotstoload[x][y].dotcolor = DEF_CLR;
 		}
 		lines = NULL;
 	}
@@ -52,13 +52,14 @@ t_dot	**ft_load_mapdots(int fd, int rows, int cols)
 
 int	main(int argc, char **argv)
 {
-	t_map		maploaded;
+	t_fdfdata	fdfdata;t_map		maploaded;
 
 	if (argc == 2)
 	{
 		maploaded = ft_read_map(argv[1]);
-		ft_putstr_fd("\nAHORA EL MAPA\n", 1);
-		ft_print_map(maploaded, maploaded.rowscols.row, maploaded.rowscols.col);
+	//	ft_putstr_fd("\nAHORA EL MAPA\n", 1);
+		ft_print_map(maploaded, maploaded.rowscols.rowx, \
+				maploaded.rowscols.coly);
 	}
 	else
 		ft_putstr_fd("Type ./fdf <map.fdf>\n", 1);
