@@ -15,7 +15,9 @@
 # Files
 
 FDF			=	fdf.c \
-				fdf_extra_1.c \
+				fdf_map.c \
+				fdf_hooks.c \
+				fdf_calculus.c \
 			
 FDF_B		=	fdf_bonus.c
 
