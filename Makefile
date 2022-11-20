@@ -18,6 +18,7 @@ FDF			=	fdf.c \
 				fdf_map.c \
 				fdf_hooks.c \
 				fdf_calculus.c \
+				fdf_draw.c \
 			
 FDF_B		=	fdf_bonus.c
 
@@ -38,7 +39,7 @@ OBJS		=	$(FDF_OBJS) \
 
 GCC			=	gcc
 
-FLAGS		=	-Wall -Wextra -Werror
+FLAGS		=	-Wall -Wextra -Werror -g3 -fsanitize=address
 #-g3 -fsanitize=address
 
 INCLUDE		=	-I include

@@ -21,6 +21,7 @@
 # include <math.h>
 # include <fcntl.h>
 # include <signal.h>
+# include <stdio.h>
 # include "mlx/mlx.h"
 # include "libft/libft.h"
 
@@ -70,4 +71,10 @@ int		button_close(t_fdfdata *fdata);
 double	rad(int deg);
 t_coord	isopro(int x, int y, int z);
 t_coord	parpro(int x, int y, int z);
+// Draw //
+void	ft_start_draw(t_fdfdata *fdata);
+void	ft_start_line_row(t_fdfdata *fdata);
+void	ft_start_line_col(t_fdfdata *fdata);
+void	ft_draw_line(t_fdfdata *fdata, t_coord begin, t_coord end);
+
 #endif

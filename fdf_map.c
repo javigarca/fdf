@@ -101,12 +101,12 @@ t_dot	**ft_load_mapdots(int fd, int rows, int cols)
 	int		y;
 
 	x = -1;
-	dotstoload = (t_dot **) malloc(sizeof (t_dot *) * rows + 1);
+	dotstoload = (t_dot **) malloc(sizeof (t_dot *) * rows);
 	if (!dotstoload)
 		exit(1);
 	while (++x < rows)
 	{
-		dotstoload[x] = (t_dot *) malloc(sizeof (t_dot) * cols + 1);
+		dotstoload[x] = (t_dot *) malloc(sizeof (t_dot) * cols);
 		if (dotstoload[x] == NULL)
 			exit(1);
 		lines = ft_split(get_next_line(fd), ' ');
