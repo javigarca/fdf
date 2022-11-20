@@ -13,7 +13,7 @@
 #ifndef FDF_H
 # define FDF_H
 
-# define DEF_CLR 0xFFFFFFFF
+# define DEF_CLR 0xAA00FF
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -43,7 +43,23 @@ typedef struct s_map
 typedef struct s_mods
 {
 	int	angle;
+	int scale;
 }			t_mods;
+typedef struct s_bresnum
+{
+	int	dY;
+	int dX;
+	int IncYi;
+	int IncYr;
+	int IncXi;
+	int IncXr;
+	int X;
+	int Y;
+	int av;
+	int	avI;
+	int	avR;
+}
+			t_bresnum;
 typedef struct s_fdfdata
 {
 	void	*mlx;
@@ -55,6 +71,9 @@ typedef struct s_fdfdata
 	int		endian;
 	t_map	map;
 	t_mods	hookmods;
+	t_coord	win_size;
+	t_coord	img_size;
+
 }			t_fdfdata;
 
 void	fdfdata_init(t_fdfdata *fdata);
@@ -69,12 +88,14 @@ int		key_close(int keypressed, void *param);
 int		button_close(t_fdfdata *fdata);
 // Calculus //
 double	rad(int deg);
-t_coord	isopro(int x, int y, int z);
+t_coord	isopro(t_fdfdata *fdata, int x, int y, int z);
 t_coord	parpro(int x, int y, int z);
+void	ft_swap(int *a, int *b);
 // Draw //
 void	ft_start_draw(t_fdfdata *fdata);
 void	ft_start_line_row(t_fdfdata *fdata);
 void	ft_start_line_col(t_fdfdata *fdata);
 void	ft_draw_line(t_fdfdata *fdata, t_coord begin, t_coord end);
-
+// Draw light //
+void	ft_light_my_pixel(t_fdfdata *fdata, int x, int y, int color);
 #endif

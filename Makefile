@@ -19,6 +19,7 @@ FDF			=	fdf.c \
 				fdf_hooks.c \
 				fdf_calculus.c \
 				fdf_draw.c \
+				fdf_draw_light.c \
 			
 FDF_B		=	fdf_bonus.c
 
