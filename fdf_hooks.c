@@ -1,18 +1,18 @@
 #include "fdf.h"
 
-int	key_close(int keypressed, void *param)
+int	key_close(int keypressed, t_fdfdata	*fdata)
 {
-	t_fdfdata *ftop = param;
 	if (keypressed == 53)
 	{
-		mlx_destroy_window(ftop->mlx, ftop->win);
+		fdata = NULL;
 		exit(0);
 	}
-	return(0);
+	return (0);
 }
 
-int	button_close(t_fdfdata *ftop)
+int	button_close(t_fdfdata *fdata)
 {
-	mlx_destroy_window(ftop->mlx, ftop->win);
+	fdata = NULL;
 	exit(0);
+	return (0);
 }

@@ -1,10 +1,10 @@
 #include "fdf.h"
 
-t_coord isopro(t_fdfdata *fdata, int x, int y, int z)
+t_coord	isopro(t_fdfdata *fdata, int x, int y, int z)
 {
-	t_coord isocoord;
-	int angle;
-	int scale;
+	t_coord	isocoord;
+	int		angle;
+	int		scale;
 
 	angle = fdata->hookmods.angle;
 	scale = fdata->hookmods.scale;
@@ -13,15 +13,15 @@ t_coord isopro(t_fdfdata *fdata, int x, int y, int z)
 	z *= scale;
 	x -= fdata->map.rowscols.rowx * scale / 2;
 	y -= fdata->map.rowscols.coly * scale / 2;
-	isocoord.rowx = (x - y) * cos(rad(angle));
-	isocoord.coly = - z + (x + y) * sin(rad(angle));
+	isocoord.rowx = (x - y) *  -cos(rad(angle));
+	isocoord.coly = -z + (x + y) * sin(rad(angle));
 	return (isocoord);
 }
 
-t_coord parpro(int x, int y, int z)
+t_coord	parpro(int x, int y, int z)
 {
-	t_coord parcoord;
-	int angle;
+	t_coord	parcoord;
+	int		angle;
 
 	angle = 30;
 	parcoord.rowx = x * cos(rad(angle)) + y;
@@ -37,7 +37,7 @@ double	rad(int deg)
 
 void	ft_swap(int *a, int *b)
 {
-	int c;
+	int	c;
 
 	c = *a;
 	*a = *b;

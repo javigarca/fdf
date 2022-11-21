@@ -1,19 +1,11 @@
 #include "fdf.h"
 
-void	ft_start_hooks(t_fdfdata *fdata)
-{
-	mlx_key_hook(fdata->win, &key_close, &fdata);
-	mlx_hook(fdata->win, 17, 0, &button_close, &fdata);
-}
 void	ft_start_draw(t_fdfdata *fdata)
 {
 	mlx_clear_window(fdata->mlx, fdata->win);
 	ft_start_line_row(fdata);
 	ft_start_line_col(fdata);
-	ft_draw_menu(fdata);
-	mlx_put_image_to_window(fdata->mlx, fdata->win, fdata->img, fdata->win_size.rowx / 3, fdata->win_size.coly / 3);
-	ft_start_hooks(fdata);
-//	mlx_put_image_to_window(fdata->mlx, fdata->win, fdata->img, 200, 100);
+	mlx_put_image_to_window(fdata->mlx, fdata->win, fdata->img, 320, 180);
 	mlx_loop(fdata->mlx);
 }
 
@@ -69,7 +61,42 @@ void	ft_draw_line(t_fdfdata *fdata, t_coord begin, t_coord end)
 	printf("Begin:%d - %d\n", begin.rowx, begin.coly);
 	printf("End:%d - %d\n", end.rowx, end.coly);
 	
+//static void	draw_line(t_point f, t_point s, t_fdf *fdf)
+//{
+	t_coord	delta;
+	t_coord	sign;
+	t_coord	cur;
+	int		error[2];
 
+	delta.rowx = FT_ABS(end.rowx - begin.rowx);
+	printf("row done");
+	delta.coly = FT_ABS(end.coly - begin.coly);
+	printf("col done");
+	sign.rowx = begin.rowx < end.rowx ? 1 : -1;
+	printf("sin row done");
+	sign.coly = begin.coly < end.coly ? 1 : -1;
+	printf("sin col  done");
+	error[0] = delta.rowx - delta.coly;
+	printf("error done");
+	cur = begin;
+	printf("curr done");
+	while (cur.rowx != end.rowx || cur.coly != end.coly)
+	{
+		ft_light_my_pixel(fdata, cur.rowx, cur.coly, DEF_CLR);
+	//	put_pixel(fdf, cur.x, cur.y, get_color(cur, f, s, delta));
+		if ((error[1] = error[0] * 2) > -delta.coly)
+		{
+			error[0] -= delta.coly;
+			cur.rowx += sign.rowx;
+		}
+		if (error[1] < delta.rowx)
+		{
+			error[0] += delta.rowx;
+			cur.coly += sign.coly;
+		}
+	}
+}
+/*
 // 0 - Distancias que se desplazan en cada eje
 	t_bresnum	bn;
 	
@@ -132,4 +159,4 @@ void	ft_draw_line(t_fdfdata *fdata, t_coord begin, t_coord end)
 		}
 //		ft_light_my_pixel(fdata, bn.X, bn.Y, DEF_CLR);
 	}
-}
+}*/
