@@ -34,5 +34,5 @@ void	fdfdata_init(t_fdfdata *fdata)
 	fdata->img = mlx_new_image(fdata->mlx, fdata->img_size.rowx, fdata->img_size.coly);
 	fdata->imgadd = mlx_get_data_addr(fdata->img, &fdata->pixel_b, &fdata->lines_b, &fdata->endian);
 	fdata->hookmods.angle = 30;
-	fdata->hookmods.scale = 25;
+	fdata->hookmods.scale = 15;
 }

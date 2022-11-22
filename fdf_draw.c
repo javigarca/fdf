@@ -9,11 +9,12 @@ void	ft_start_draw(t_fdfdata *fdata)
 {
 	mlx_clear_window(fdata->mlx, fdata->win);
 	ft_start_line_row(fdata);
+//	mlx_put_image_to_window(fdata->mlx, fdata->win, fdata->img, 200, 100);
 	ft_start_line_col(fdata);
 	ft_draw_menu(fdata);
-	mlx_put_image_to_window(fdata->mlx, fdata->win, fdata->img, fdata->win_size.rowx / 3, fdata->win_size.coly / 3);
+//	mlx_put_image_to_window(fdata->mlx, fdata->win, fdata->img, fdata->win_size.rowx / 3, fdata->win_size.coly / 3);
 	ft_start_hooks(fdata);
-//	mlx_put_image_to_window(fdata->mlx, fdata->win, fdata->img, 200, 100);
+	mlx_put_image_to_window(fdata->mlx, fdata->win, fdata->img, 200, 100);
 	mlx_loop(fdata->mlx);
 }
 
@@ -30,14 +31,15 @@ void	ft_start_line_row(t_fdfdata *fdata)
 		cols = 0;
 		while (cols < fdata->map.rowscols.coly - 1)
 		{
-			begin = isopro(fdata, rows, cols, fdata->map.mapdots[rows][cols].hz);
-			end = isopro(fdata, rows, cols + 1, fdata->map.mapdots[rows][cols + 1].hz);
+			begin = ft_iso(fdata, rows, cols, fdata->map.mapdots[rows][cols].hz);
+			end = ft_iso(fdata, rows, cols + 1, fdata->map.mapdots[rows][cols + 1].hz);
 //			printf("\n vamos por la:%i, hasta la:%i", cols, fdata->map.rowscols.coly);
 			ft_draw_line(fdata, begin, end);
 			cols++;
 		}
 		rows++;
 	}
+//	mlx_put_image_to_window(fdata->mlx, fdata->win, fdata->img, 200, 100);
 }
 
 void	ft_start_line_col(t_fdfdata *fdata)
@@ -53,21 +55,22 @@ void	ft_start_line_col(t_fdfdata *fdata)
 		rows = 0;
 		while (rows < fdata->map.rowscols.rowx - 1)
 		{
-			begin = isopro(fdata, rows, cols, fdata->map.mapdots[rows][cols].hz);
-			end = isopro(fdata, rows + 1, cols, fdata->map.mapdots[rows + 1][cols].hz);
-			ft_draw_line(fdata, begin, end);
+			begin = ft_iso(fdata, rows, cols, fdata->map.mapdots[rows][cols].hz);
+			end = ft_iso(fdata, rows + 1, cols, fdata->map.mapdots[rows + 1][cols].hz);
+			ft_draw_line(fdata, end, begin);
 			rows++;
 		}
 		cols++;
 	}
+//	mlx_put_image_to_window(fdata->mlx, fdata->win, fdata->img, 200, 100);
 }
 
 void	ft_draw_line(t_fdfdata *fdata, t_coord begin, t_coord end)
 {
-	printf("%i ", fdata->hookmods.angle);
-	ft_putstr_fd("\n Ahora COORD a iso \n", 1);
-	printf("Begin:%d - %d\n", begin.rowx, begin.coly);
-	printf("End:%d - %d\n", end.rowx, end.coly);
+//	printf("%i ", fdata->hookmods.angle);
+//	ft_putstr_fd("\n Ahora COORD a iso \n", 1);
+//	printf("Begin:%d - %d\n", begin.rowx, begin.coly);
+//	printf("End:%d - %d\n", end.rowx, end.coly);
 	
 
 // 0 - Distancias que se desplazan en cada eje
@@ -116,8 +119,8 @@ void	ft_draw_line(t_fdfdata *fdata, t_coord begin, t_coord end)
     while (bn.X < end.rowx)
 	{
 		ft_light_my_pixel(fdata, bn.X, bn.Y, DEF_CLR);
-  //        DibujarPixel(X, Y, Color) // Como mínimo se dibujará siempre 1 píxel (punto).
-//          Mensaje(av + " ") // (debug) para ver los valores de error global que van apareciendo.
+ //       printf("(%i, %i)\n", bn.X, bn.Y);
+  //          Mensaje(av + " ") // (debug) para ver los valores de error global que van apareciendo.
 		if (bn.av >= 0)
 		{
 			bn.X = (bn.X + bn.IncXi);     // X aumenta en inclinado.
@@ -132,4 +135,5 @@ void	ft_draw_line(t_fdfdata *fdata, t_coord begin, t_coord end)
 		}
 //		ft_light_my_pixel(fdata, bn.X, bn.Y, DEF_CLR);
 	}
+	printf("FIN CALCULOS");
 }

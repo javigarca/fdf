@@ -2,15 +2,23 @@
 
 void	ft_light_my_pixel(t_fdfdata *fdata, int x, int y, int color)
 {
-	int	*lpixel;
+	int lpixel;
 	int	width;
 	int	height;
 
 	width = fdata->img_size.rowx;
 	height = fdata->img_size.coly;
-	lpixel = (int *)fdata->imgadd;
+//		lpixel = (x * fdata->pixel_b / 8) + (y * fdata->lines_b);
 	if (x >= 0 && x < width && y >= 0 && y < height)
-		lpixel[x + fdata->img_size.rowx * y] = color;
+	{
+		lpixel = (x * fdata->pixel_b / 8) + (y * fdata->lines_b);
+		fdata->imgadd[lpixel] = color;
+		fdata->imgadd[++lpixel] = color >> 8;
+		fdata->imgadd[++lpixel] = color >> 16;
+	}
+//	else
+//		printf("pix: %i", lpixel);
+		
 }
 
 void	ft_draw_menu(t_fdfdata *fdata)

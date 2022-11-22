@@ -90,8 +90,8 @@ int		key_close(int keypressed, t_fdfdata *fdata);
 int		button_close(t_fdfdata *fdata);
 // Calculus //
 double	rad(int deg);
-t_coord	isopro(t_fdfdata *fdata, int x, int y, int z);
-t_coord	parpro(int x, int y, int z);
+t_coord	ft_iso(t_fdfdata *fdata, int x, int y, int z);
+t_coord	ft_para(t_fdfdata *fdata, int x, int y, int z);
 void	ft_swap(int *a, int *b);
 // Draw //
 void	ft_start_hooks(t_fdfdata *fdata);
