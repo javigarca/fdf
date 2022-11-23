@@ -15,7 +15,7 @@ void	ft_light_my_pixel(t_fdfdata *fdata, int x, int y, int color)
 		fdata->imgadd[lpixel] = color;
 		fdata->imgadd[++lpixel] = color >> 8;
 		fdata->imgadd[++lpixel] = color >> 16;
-		printf(".\n");
+		printf(".\r");
 	}
 	else
 	{
@@ -45,4 +45,22 @@ void	ft_draw_menu(t_fdfdata *fdata)
 	mlx_string_put(fdata->mlx, fdata->win, 10, 40, 0xAAAFFF, line);
 	line = "cuarta linea";
 	mlx_string_put(fdata->mlx, fdata->win, 10, 55, 0xAAAFFF, line);
+}
+
+void	ft_clear_image(t_fdfdata *fdata, int color)
+{
+	int x;
+	int y;
+
+	x = 0;
+	while (x < fdata->win_size.rowx)
+	{
+		y = 0;
+		while (y < fdata->win_size.coly)
+		{
+			ft_light_my_pixel(fdata, x, y, color);
+			++y;
+		}
+		++x;
+	}
 }

@@ -40,11 +40,11 @@ t_coord	ft_rows_cols_check(int fd)
 	{
 		rows++;
 		line = get_next_line(fd);
-		if (colscheck != ft_countcols(line, ' ') && (line != NULL))
-		{
-			ft_putstr_fd("Error. Not a valid map.\n", 2);
-			exit(1);
-		}
+//		if (colscheck != ft_countcols(line, ' ') && (line != NULL))
+//		{
+//			ft_putstr_fd("Error. Not a valid map.\n", 2);
+//			exit(1);
+//		}
 	}
 	coords.rowx = rows;
 	coords.coly = colscheck;

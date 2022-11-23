@@ -17,6 +17,7 @@
 FDF			=	fdf.c \
 				fdf_map.c \
 				fdf_hooks.c \
+				fdf_hooks_ctl.c \
 				fdf_calculus.c \
 				fdf_draw.c \
 				fdf_draw_light.c \

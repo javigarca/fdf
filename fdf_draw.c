@@ -2,20 +2,22 @@
 
 void	ft_start_hooks(t_fdfdata *fdata)
 {
-	mlx_key_hook(fdata->win, &key_close, &fdata);
-	mlx_hook(fdata->win, 17, 0, &button_close, &fdata);
+//	mlx_key_hook(fdata->win, &key_close, &fdata);
+	mlx_hook(fdata->win, 2, 0, ft_key_press, fdata);
+//	mlx_hook(fdata->win, 4, 0, mouse_press, fdf);
+//	mlx_hook(fdata->win, 5, 0, mouse_release, fdf);
+//	mlx_hook(fdata->win, 6, 0, mouse_move, fdf);
+	mlx_hook(fdata->win, 17, 0, ft_button_close, fdata);
 }
 void	ft_start_draw(t_fdfdata *fdata)
 {
-	mlx_clear_window(fdata->mlx, fdata->win);
+	ft_clear_image(fdata, BKG_CLR);
 	ft_start_line_row(fdata);
 	ft_start_line_col(fdata);
-//	printf("FIN CALCULOS");
-	ft_draw_menu(fdata);
-	ft_start_hooks(fdata);
+//	ft_draw_menu(fdata);
 	mlx_put_image_to_window(fdata->mlx, fdata->win, fdata->img, 320, 0);
-	ft_putstr_fd("FIN CALCULOS", 1);
-	mlx_loop(fdata->mlx);
+//	ft_start_hooks(fdata);
+//	mlx_loop(fdata->mlx);
 }
 
 void	ft_start_line_row(t_fdfdata *fdata)

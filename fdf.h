@@ -14,6 +14,7 @@
 # define FDF_H
 
 # define DEF_CLR 0xAA00FF
+# define BKG_CLR 0x005050
 # define FT_ABS(X) (((X) < 0) ? (-(X)) : (X))
 
 # include <unistd.h>
@@ -85,8 +86,14 @@ int		ft_countcols(const char *str, char c);
 t_coord	ft_rows_cols_check(int fd);
 void	ft_print_map(t_map maptoprint, int rows, int cols);
 // Hooks //
-int		key_close(int keypressed, t_fdfdata *fdata);
-int		button_close(t_fdfdata *fdata);
+int		ft_key_close(int key, t_fdfdata *fdata);
+int		ft_button_close(t_fdfdata *fdata);
+void	ft_scale(int key, t_fdfdata *fdata);
+// Hooks Control //
+int		ft_key_press(int key, t_fdfdata *fdata);
+int		ft_mouse_press(int button, int x, int y, t_fdfdata *fdata);
+int		ft_mouse_release(int button, int x, int y, t_fdfdata *fdata);
+int		ft_mouse_move(int x, int y, t_fdfdata *fdata);
 // Calculus //
 double	rad(int deg);
 t_coord	ft_iso(t_fdfdata *fdata, int x, int y, int z);
@@ -101,4 +108,5 @@ void	ft_draw_line(t_fdfdata *fdata, t_coord begin, t_coord end);
 // Draw light //
 void	ft_light_my_pixel(t_fdfdata *fdata, int x, int y, int color);
 void	ft_draw_menu(t_fdfdata *fdata);
+void	ft_clear_image(t_fdfdata *fdata, int color);
 #endif

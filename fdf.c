@@ -15,7 +15,12 @@ int	main(int argc, char **argv)
 				fdata.map.rowscols.coly);
 		ft_print_map(fdata.map, fdata.map.rowscols.rowx, \
 				fdata.map.rowscols.coly);*/
+//		mlx_put_image_to_window(fdata.mlx, fdata.win, fdata.img, 320, 0);
+		ft_start_hooks(&fdata);
 		ft_start_draw(&fdata);
+		ft_draw_menu(&fdata);
+//		mlx_put_image_to_window(fdata.mlx, fdata.win, fdata.img, 320, 0);
+		mlx_loop(fdata.mlx);
 	}
 	else
 		ft_putstr_fd("Type ./fdf <map.fdf>\n", 1);
