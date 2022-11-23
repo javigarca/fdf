@@ -8,16 +8,23 @@ void	ft_light_my_pixel(t_fdfdata *fdata, int x, int y, int color)
 
 	width = fdata->img_size.rowx;
 	height = fdata->img_size.coly;
-//		lpixel = (x * fdata->pixel_b / 8) + (y * fdata->lines_b);
+		lpixel = (x * fdata->pixel_b / 8) + (y * fdata->lines_b);
 	if (x >= 0 && x < width && y >= 0 && y < height)
 	{
-		lpixel = (x * fdata->pixel_b / 8) + (y * fdata->lines_b);
+//		lpixel = (x * fdata->pixel_b / 8) + (y * fdata->lines_b);
 		fdata->imgadd[lpixel] = color;
 		fdata->imgadd[++lpixel] = color >> 8;
 		fdata->imgadd[++lpixel] = color >> 16;
+		printf(".\n");
 	}
-//	else
-//		printf("pix: %i", lpixel);
+	else
+	{
+		printf("*\r");
+		printf("*\r");
+		printf("8\r");
+		printf("8\r");
+	}
+
 		
 }
 

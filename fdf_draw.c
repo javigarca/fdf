@@ -9,12 +9,12 @@ void	ft_start_draw(t_fdfdata *fdata)
 {
 	mlx_clear_window(fdata->mlx, fdata->win);
 	ft_start_line_row(fdata);
-//	mlx_put_image_to_window(fdata->mlx, fdata->win, fdata->img, 200, 100);
 	ft_start_line_col(fdata);
+//	printf("FIN CALCULOS");
 	ft_draw_menu(fdata);
-//	mlx_put_image_to_window(fdata->mlx, fdata->win, fdata->img, fdata->win_size.rowx / 3, fdata->win_size.coly / 3);
 	ft_start_hooks(fdata);
-	mlx_put_image_to_window(fdata->mlx, fdata->win, fdata->img, 200, 100);
+	mlx_put_image_to_window(fdata->mlx, fdata->win, fdata->img, 320, 0);
+	ft_putstr_fd("FIN CALCULOS", 1);
 	mlx_loop(fdata->mlx);
 }
 
@@ -33,13 +33,11 @@ void	ft_start_line_row(t_fdfdata *fdata)
 		{
 			begin = ft_iso(fdata, rows, cols, fdata->map.mapdots[rows][cols].hz);
 			end = ft_iso(fdata, rows, cols + 1, fdata->map.mapdots[rows][cols + 1].hz);
-//			printf("\n vamos por la:%i, hasta la:%i", cols, fdata->map.rowscols.coly);
 			ft_draw_line(fdata, begin, end);
 			cols++;
 		}
 		rows++;
 	}
-//	mlx_put_image_to_window(fdata->mlx, fdata->win, fdata->img, 200, 100);
 }
 
 void	ft_start_line_col(t_fdfdata *fdata)
@@ -62,7 +60,6 @@ void	ft_start_line_col(t_fdfdata *fdata)
 		}
 		cols++;
 	}
-//	mlx_put_image_to_window(fdata->mlx, fdata->win, fdata->img, 200, 100);
 }
 
 void	ft_draw_line(t_fdfdata *fdata, t_coord begin, t_coord end)
@@ -135,5 +132,5 @@ void	ft_draw_line(t_fdfdata *fdata, t_coord begin, t_coord end)
 		}
 //		ft_light_my_pixel(fdata, bn.X, bn.Y, DEF_CLR);
 	}
-	printf("FIN CALCULOS");
+//	printf("FIN CALCULOS");
 }

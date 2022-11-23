@@ -21,20 +21,13 @@ FDF			=	fdf.c \
 				fdf_draw.c \
 				fdf_draw_light.c \
 			
-FDF_B		=	fdf_bonus.c
-
 # Sources and objects
 
 FDF_SRC		=	$(FDF)
 
 FDF_OBJS	=	$(FDF_SRC:.c=.o)
 
-FDF_B_SRC	=	$(FDF_B)
-
-FDF_B_OBJS	=	$(FDF_B_SRC:.c=.o)
-
-OBJS		=	$(FDF_OBJS) \
-				$(FDF_B_OBJS) 
+OBJS		=	$(FDF_OBJS)
 
 # ------------------------------ Constant strings ------------------------------
 
@@ -45,46 +38,33 @@ FLAGS		=	-Wall -Wextra -Werror -g3 -fsanitize=address
 
 INCLUDE		=	-I include
 
-FDF_NAME	=	fdf
-
-FDF_B_NAME	=	fdf_bonus
-
 NAME		=	fdf
 
 LIBMK		=	cd mlx && make
 
 LIBFTMK		=	cd libft && make
 
-LIBS		=	-Lmlx -lmlx -framework OpenGL -framework AppKit libft/libft.a
+LIBS		=	-L mlx -lmlx -framework OpenGL -framework AppKit libft/libft.a
 # ------------------------------ Rules ------------------------------
 
 all: $(NAME)
 
-$(NAME): fdfa
-
-bonus: fdfb
-		 
-fdfa: $(FDF_OBJS)
-	$(LIBMK)
-	$(LIBFTMK)
-	$(GCC) $(FLAGS) $(FDF_OBJS) $(LIBS) -o $(FDF_NAME)
+$(NAME): $(FDF_OBJS)
+	@$(LIBMK)
+	@$(LIBFTMK)
+	@$(GCC) $(FLAGS) $(FDF_OBJS) $(LIBS) -o $(NAME)
 	
-fdfb: $(FDF_B_OBJS)
-	$(LIBMK)
-	$(LIBFTMK)
-	$(GCC) $(FLAGS) $(FDF_B_OBJS) $(LIBS) -o $(FDF_B_NAME)
-
 clean:
 	rm -rf $(OBJS)
 	make clean -C mlx/
 	make clean -C libft/
 
 fclean: clean
-	rm -rf $(FDF_NAME) $(FDF_B_NAME)
+	rm -rf $(NAME)
 
 .c.o:
 	${GCC} ${FLAGS} $(INCLUDE) -c $< -o ${<:.c=.o}
 
 re:	fclean all
 
-.PHONY: all fdf clean fclean re fdf_bonus minilibx
+.PHONY: all fdf clean fclean re

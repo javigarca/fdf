@@ -21,7 +21,6 @@
 # include <string.h>
 # include <math.h>
 # include <fcntl.h>
-# include <signal.h>
 # include <stdio.h>
 # include "mlx/mlx.h"
 # include "libft/libft.h"
