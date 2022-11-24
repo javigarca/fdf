@@ -11,10 +11,10 @@ int	main(int argc, char **argv)
 		fdata.map_name = argv[1];
 		fdfdata_init(&fdata);
 //		ft_putstr_fd("\nAHORA EL MAPA\n", 1);
-/*		printf("\nSon rows:%i y cols:%i.", fdata.map.rowscols.rowx, \
-				fdata.map.rowscols.coly);
-		ft_print_map(fdata.map, fdata.map.rowscols.rowx, \
-				fdata.map.rowscols.coly);*/
+//		printf("\nSon rows:%i y cols:%i.", fdata.map.rowscols.rowx, \
+//				fdata.map.rowscols.coly);
+//		ft_print_map(fdata.map, fdata.map.rowscols.rowx, \
+//				fdata.map.rowscols.coly);
 //		mlx_put_image_to_window(fdata.mlx, fdata.win, fdata.img, 320, 0);
 		ft_start_hooks(&fdata);
 		ft_start_draw(&fdata);
@@ -45,10 +45,13 @@ void	fdfdata_init(t_fdfdata *fdata)
 	fdata->imgadd = mlx_get_data_addr(fdata->img, &fdata->pixel_b, &fdata->lines_b, &fdata->endian);
 	fdata->hookmods.angle = 30;
 	if (esch < escw )
-		fdata->hookmods.scale = esch / 1.5;
+		fdata->hookmods.scale = esch / 2;
 	else
-		fdata->hookmods.scale = escw / 1.5;
+		fdata->hookmods.scale = escw / 2;
 	if (fdata->hookmods.scale < 1)
 		fdata->hookmods.scale = 2;
-	printf("escala:%i\n", fdata->hookmods.scale);
+//	printf("escala:%i\n", fdata->hookmods.scale);
+	fdata->hookmods.xdispl = 0;
+	fdata->hookmods.ydispl = 0;
+	fdata->hookmods.view = 1;
 }

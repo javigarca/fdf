@@ -39,23 +39,20 @@ void	ft_scale(int key, t_fdfdata *fdata)
 	ft_start_draw(fdata);
 }
 
-/*
-   ** Move map
-  
-void	move(int key, t_fdf *fdf)
+void	ft_axis_displ(int key, t_fdfdata *fdata)
 {
-		if (key == ARROW_LEFT)
-					fdf->camera->x_offset -= 10;
-			else if (key == ARROW_RIGHT)
-						fdf->camera->x_offset += 10;
-				else if (key == ARROW_UP)
-							fdf->camera->y_offset -= 10;
-					else
-								fdf->camera->y_offset += 10;
-						draw(fdf->map, fdf);
+		if (key == 123)
+			fdata->hookmods.xdispl -= 10;
+		else if (key == 124)
+			fdata->hookmods.xdispl += 10;
+		else if (key == 125)
+			fdata->hookmods.ydispl += 10;
+		else
+			fdata->hookmods.ydispl -= 10;
+		ft_start_draw(fdata);
 }
 
-
+/*
    ** Rotate map
    
 void	rotate(int key, t_fdf *fdf)
@@ -94,16 +91,15 @@ void	flatten(int key, t_fdf *fdf)
 }
 
    ** Change projection type
- 
-void	change_projection(int key, t_fdf *fdf)
+*/ 
+void	ft_change_view(int key, t_fdfdata *fdata)
 {
-		fdf->camera->alpha = 0;
-			fdf->camera->beta = 0;
-				fdf->camera->gamma = 0;
-					if (key == MAIN_PAD_I)
-								fdf->camera->projection = ISO;
-						else if (key == MAIN_PAD_P)
-									fdf->camera->projection = PARALLEL;
-							draw(fdf->map, fdf);
+	if (key == 9)
+	{
+		if (fdata->hookmods.view)
+			fdata->hookmods.view = 0;
+		else
+			fdata->hookmods.view++;
+	}
+	ft_start_draw(fdata);
 }
-*/

@@ -33,8 +33,8 @@ void	ft_start_line_row(t_fdfdata *fdata)
 		cols = 0;
 		while (cols < (fdata->map.rowscols.coly -1))
 		{
-			begin = ft_iso(fdata, rows, cols, fdata->map.mapdots[rows][cols].hz);
-			end = ft_iso(fdata, rows, cols + 1, fdata->map.mapdots[rows][cols + 1].hz);
+			begin = ft_cal_pro(fdata, rows, cols, fdata->map.mapdots[rows][cols].hz);
+			end = ft_cal_pro(fdata, rows, cols + 1, fdata->map.mapdots[rows][cols + 1].hz);
 			ft_draw_line(fdata, begin, end);
 			cols++;
 		}
@@ -55,8 +55,8 @@ void	ft_start_line_col(t_fdfdata *fdata)
 		rows = 0;
 		while (rows < (fdata->map.rowscols.rowx - 1))
 		{
-			begin = ft_iso(fdata, rows, cols, fdata->map.mapdots[rows][cols].hz);
-			end = ft_iso(fdata, rows + 1, cols, fdata->map.mapdots[rows + 1][cols].hz);
+			begin = ft_cal_pro(fdata, rows, cols, fdata->map.mapdots[rows][cols].hz);
+			end = ft_cal_pro(fdata, rows + 1, cols, fdata->map.mapdots[rows + 1][cols].hz);
 			ft_draw_line(fdata, end, begin);
 			rows++;
 		}

@@ -16,6 +16,8 @@
 # define DEF_CLR 0xE2E270
 # define BKG_CLR_A 0x151515
 # define BKG_CLR_B 0x303030
+# define TXT_CLR_A 0xA2A20F
+# define TXT_CLR_B 0xAC0FAC
 # define FT_ABS(X) (((X) < 0) ? (-(X)) : (X))
 
 # include <unistd.h>
@@ -46,6 +48,9 @@ typedef struct s_mods
 {
 	int	angle;
 	int scale;
+	int	xdispl;
+	int ydispl;
+	int view;
 }			t_mods;
 typedef struct s_bresnum
 {
@@ -90,6 +95,8 @@ void	ft_print_map(t_map maptoprint, int rows, int cols);
 int		ft_key_close(int key, t_fdfdata *fdata);
 int		ft_button_close(t_fdfdata *fdata);
 void	ft_scale(int key, t_fdfdata *fdata);
+void	ft_axis_displ(int key, t_fdfdata *fdata);
+void	ft_change_view(int key, t_fdfdata *fdata);
 // Hooks Control //
 int		ft_key_press(int key, t_fdfdata *fdata);
 int		ft_mouse_press(int button, int x, int y, t_fdfdata *fdata);
@@ -97,8 +104,7 @@ int		ft_mouse_release(int button, int x, int y, t_fdfdata *fdata);
 int		ft_mouse_move(int x, int y, t_fdfdata *fdata);
 // Calculus //
 double	rad(int deg);
-t_coord	ft_iso(t_fdfdata *fdata, int x, int y, int z);
-t_coord	ft_para(t_fdfdata *fdata, int x, int y, int z);
+t_coord	ft_cal_pro(t_fdfdata *fdata, int x, int y, int z);
 void	ft_swap(int *a, int *b);
 // Draw //
 void	ft_start_hooks(t_fdfdata *fdata);

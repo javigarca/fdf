@@ -7,10 +7,10 @@ int	ft_key_press(int key, t_fdfdata *fdata)
 		exit(0);
 	if (key == 69 || key == 24 || key == 78 || key == 27)
 		ft_scale(key, fdata);
-/*	else if (key == ARROW_LEFT || key == ARROW_RIGHT
-		|| key == ARROW_UP || key == ARROW_DOWN)
-		move(key, fdf);
-	else if (key == NUM_PAD_1 || key == MAIN_PAD_1
+	else if (key == 123 || key == 124
+		|| key == 125 || key == 126)
+		ft_axis_displ(key, fdata);
+/*	else if (key == NUM_PAD_1 || key == MAIN_PAD_1
 		|| key == NUM_PAD_2 || key == MAIN_PAD_2
 		|| key == NUM_PAD_3 || key == MAIN_PAD_3
 		|| key == NUM_PAD_4 || key == MAIN_PAD_4
@@ -20,10 +20,9 @@ int	ft_key_press(int key, t_fdfdata *fdata)
 		|| key == NUM_PAD_9 || key == MAIN_PAD_9)
 		rotate(key, fdf);
 	else if (key == MAIN_PAD_LESS || key == MAIN_PAD_MORE)
-		flatten(key, fdf);
-	else if (key == MAIN_PAD_P || key == MAIN_PAD_I)
-		change_projection(key, fdf);
-		*/
+		flatten(key, fdf);*/
+	else if (key == 9)
+		ft_change_view(key, fdata);
 	return (0);
 }
 /*

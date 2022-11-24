@@ -35,16 +35,20 @@ void	ft_draw_menu(t_fdfdata *fdata)
 
 	name = fdata->map_name;
 	line = "Mapa: ";
-	mlx_string_put(fdata->mlx, fdata->win, 10, 5, 0xAAAFFF, line);
-	mlx_string_put(fdata->mlx, fdata->win, 65, 5, 0x02FFFF, name);
-	line = "---------------------";
-	mlx_string_put(fdata->mlx, fdata->win, 10, 15, 0xAAAFFF, line);
-	line = "segunda linea: zoom";
-	mlx_string_put(fdata->mlx, fdata->win, 10, 25, 0xAAAFFF, line);
-	line = "Tercera linea";
-	mlx_string_put(fdata->mlx, fdata->win, 10, 40, 0xAAAFFF, line);
+	mlx_string_put(fdata->mlx, fdata->win, 10, 5, TXT_CLR_A, line);
+	mlx_string_put(fdata->mlx, fdata->win, 65, 5, TXT_CLR_B, name);
+	line = "------------------------------";
+	mlx_string_put(fdata->mlx, fdata->win, 10, 20, DEF_CLR, line);
+	line = "Axis X and Y: Arrow Keys";
+	mlx_string_put(fdata->mlx, fdata->win, 10, 40, TXT_CLR_A, line);
+	line = "Scale: + and -";
+	mlx_string_put(fdata->mlx, fdata->win, 10, 60, TXT_CLR_A, line);
 	line = "cuarta linea";
-	mlx_string_put(fdata->mlx, fdata->win, 10, 55, 0xAAAFFF, line);
+	mlx_string_put(fdata->mlx, fdata->win, 10, 80, TXT_CLR_A, line);
+	line = "5a linea";
+	mlx_string_put(fdata->mlx, fdata->win, 10, 100, TXT_CLR_A, line);
+	line = "67rta linea";
+	mlx_string_put(fdata->mlx, fdata->win, 10, 120, TXT_CLR_A, line);
 }
 
 void	ft_clear_image(t_fdfdata *fdata, int color_a, int color_b)
@@ -52,7 +56,6 @@ void	ft_clear_image(t_fdfdata *fdata, int color_a, int color_b)
 	int x;
 	int y;
 
-	color_a = 0;
 	x = 0;
 	while (x < fdata->win_size.rowx)
 	{
