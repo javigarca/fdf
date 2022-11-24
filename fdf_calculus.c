@@ -8,6 +8,8 @@ t_coord	ft_cal_pro(t_fdfdata *fdata, int x, int y, int z)
 
 	angle = fdata->hookmods.angle;
 	scale = fdata->hookmods.scale;
+	coord.color = ft_dot_color(ft_percent(fdata->min_hz, fdata->max_hz, z));
+//	printf("Max: , Min:, z="); 
 	x *= scale;
 	y *= scale;
 	z *= scale;

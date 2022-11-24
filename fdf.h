@@ -14,6 +14,16 @@
 # define FDF_H
 
 # define DEF_CLR 0xE2E270
+# define P10_CLR 0x1915FF
+# define P20_CLR 0x6D00AF
+# define P30_CLR 0xCB00BF
+# define P40_CLR 0xFF066A
+# define P50_CLR 0xFF671D
+# define P60_CLR 0xFCFF6D
+# define P70_CLR 0xAEFF95
+# define P80_CLR 0x98FFE6
+# define P90_CLR 0xB3E6FF
+# define P00_CLR 0xFDFDFD
 # define BKG_CLR_A 0x151515
 # define BKG_CLR_B 0x303030
 # define TXT_CLR_A 0xF7F7DA
@@ -33,6 +43,7 @@ typedef struct s_coord
 {
 	int	rowx;
 	int	coly;
+	int	color;
 }			t_coord;
 typedef struct s_dot
 {
@@ -84,11 +95,13 @@ typedef struct s_fdfdata
 	t_mods	hookmods;
 	t_coord	win_size;
 	t_coord	img_size;
-
+	int		max_hz;
+	int		min_hz;
 }			t_fdfdata;
 
 void	ft_fdfdata_init(t_fdfdata *fdata);
 void	ft_hookmods_init(t_fdfdata *fdata);
+void	ft_set_maxmin_hz(t_fdfdata *fdata, int rows, int cols);
 // Map //
 t_map	ft_read_map(char *namefile);
 t_dot	**ft_load_mapdots(int fd, int rows, int cols);
@@ -124,4 +137,9 @@ void	ft_clear_image(t_fdfdata *fdata, int color_a, int color_b);
 void	ft_rotate_x_axis(int *y, int *z, double x_angle);
 void	ft_rotate_y_axis(int *x, int *z, double y_angle);
 void	ft_rotate_z_axis(int *x, int *y, double z_angle);
+// Color //
+double	ft_percent(int start, int end, int current);
+int		ft_get_light(int start, int end, double percentage);
+int		ft_get_color(t_coord current, t_coord begin, t_coord end, t_coord delta);
+int		ft_dot_color(double percentage);
 #endif

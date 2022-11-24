@@ -91,8 +91,7 @@ void	ft_draw_line(t_fdfdata *fdata, t_coord begin, t_coord end)
 //	printf("curr done");
 	while (cur.rowx != end.rowx || cur.coly != end.coly)
 	{
-		ft_light_my_pixel(fdata, cur.rowx, cur.coly, DEF_CLR);
-	//	put_pixel(fdf, cur.x, cur.y, get_color(cur, f, s, delta));
+		ft_light_my_pixel(fdata, cur.rowx, cur.coly, ft_get_color(cur, begin, end, delta));
 		if ((error[1] = error[0] * 2) > -delta.coly)
 		{
 			error[0] -= delta.coly;

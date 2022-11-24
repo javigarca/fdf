@@ -35,26 +35,26 @@ void	ft_draw_menu(t_fdfdata *fdata)
 
 	name = fdata->map_name;
 	line = "Mapa: ";
-	mlx_string_put(fdata->mlx, fdata->win, 10, 5, TXT_CLR_A, line);
-	mlx_string_put(fdata->mlx, fdata->win, 65, 5, TXT_CLR_B, name);
+	mlx_string_put(fdata->mlx, fdata->win, 10, 15, TXT_CLR_A, line);
+	mlx_string_put(fdata->mlx, fdata->win, 65, 15, TXT_CLR_B, name);
 	line = "------------------------------";
-	mlx_string_put(fdata->mlx, fdata->win, 10, 20, DEF_CLR, line);
+	mlx_string_put(fdata->mlx, fdata->win, 10, 30, DEF_CLR, line);
 	line = "Move Axis X,Y: Arrow Keys";
-	mlx_string_put(fdata->mlx, fdata->win, 10, 40, TXT_CLR_A, line);
-	line = "Scale: + | -";
-	mlx_string_put(fdata->mlx, fdata->win, 10, 60, TXT_CLR_A, line);
+	mlx_string_put(fdata->mlx, fdata->win, 10, 50, TXT_CLR_A, line);
+	line = "Zoom: + | -";
+	mlx_string_put(fdata->mlx, fdata->win, 10, 70, TXT_CLR_A, line);
 	line = "Perspective and reset: P";
-	mlx_string_put(fdata->mlx, fdata->win, 10, 80, TXT_CLR_A, line);
+	mlx_string_put(fdata->mlx, fdata->win, 10, 90, TXT_CLR_A, line);
 	line = "Rotation:";
-	mlx_string_put(fdata->mlx, fdata->win, 10, 100, TXT_CLR_A, line);
+	mlx_string_put(fdata->mlx, fdata->win, 10, 110, TXT_CLR_A, line);
 	line = "           X Axis: Q | A";
-	mlx_string_put(fdata->mlx, fdata->win, 10, 115, TXT_CLR_A, line);
+	mlx_string_put(fdata->mlx, fdata->win, 10, 125, TXT_CLR_A, line);
 	line = "           Y Axis: W | S";
-	mlx_string_put(fdata->mlx, fdata->win, 10, 130, TXT_CLR_A, line);
+	mlx_string_put(fdata->mlx, fdata->win, 10, 140, TXT_CLR_A, line);
 	line = "           Z Axis: E | D";
-	mlx_string_put(fdata->mlx, fdata->win, 10, 145, TXT_CLR_A, line);
-	line = "67rta linea";
-	mlx_string_put(fdata->mlx, fdata->win, 10, 165, TXT_CLR_A, line);
+	mlx_string_put(fdata->mlx, fdata->win, 10, 155, TXT_CLR_A, line);
+	line = "Height Percentage: G | H";
+	mlx_string_put(fdata->mlx, fdata->win, 10, 175, TXT_CLR_A, line);
 }
 
 void	ft_clear_image(t_fdfdata *fdata, int color_a, int color_b)

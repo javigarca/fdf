@@ -18,6 +18,7 @@ int	main(int argc, char **argv)
 //				fdata.map.rowscols.coly);
 //		mlx_put_image_to_window(fdata.mlx, fdata.win, fdata.img, 320, 0);
 		ft_start_hooks(&fdata);
+//		printf("Max: %i Min: %i", fdata.max_hz, fdata.min_hz);
 		ft_start_draw(&fdata);
 		ft_draw_menu(&fdata);
 //		mlx_put_image_to_window(fdata.mlx, fdata.win, fdata.img, 320, 0);
@@ -39,6 +40,7 @@ void	ft_fdfdata_init(t_fdfdata *fdata)
 	fdata->win = mlx_new_window(fdata->mlx, fdata->win_size.rowx, fdata->win_size.coly, "FDF");
 	fdata->img = mlx_new_image(fdata->mlx, fdata->img_size.rowx, fdata->img_size.coly);
 	fdata->imgadd = mlx_get_data_addr(fdata->img, &fdata->pixel_b, &fdata->lines_b, &fdata->endian);
+	ft_set_maxmin_hz(fdata, fdata->map.rowscols.rowx, fdata->map.rowscols.coly);
 }
 
 void	ft_hookmods_init(t_fdfdata *fdata)
@@ -62,4 +64,27 @@ void	ft_hookmods_init(t_fdfdata *fdata)
 	fdata->hookmods.x_angle = 0;
 	fdata->hookmods.y_angle = 0;
 	fdata->hookmods.z_angle = 0;
+}
+
+void	ft_set_maxmin_hz(t_fdfdata *fdata, int rows, int cols)
+{
+	int	x;
+	int	y;
+	
+	fdata->max_hz = fdata->map.mapdots[0][0].hz;
+	fdata->min_hz = fdata->max_hz;
+	x = 0;
+	while (x < rows)
+	{
+		y = 0;
+		while (y < cols)
+		{
+			if (fdata->map.mapdots[x][y].hz > fdata->max_hz)
+				fdata->max_hz = fdata->map.mapdots[x][y].hz;
+			if(fdata->map.mapdots[x][y].hz < fdata->min_hz)
+				fdata->min_hz = fdata->map.mapdots[x][y].hz; 
+			y++;
+		}
+		x++;
+	}
 }
