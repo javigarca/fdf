@@ -43,7 +43,7 @@ void	ft_draw_menu(t_fdfdata *fdata)
 	mlx_string_put(fdata->mlx, fdata->win, 10, 40, TXT_CLR_A, line);
 	line = "Scale: + and -";
 	mlx_string_put(fdata->mlx, fdata->win, 10, 60, TXT_CLR_A, line);
-	line = "cuarta linea";
+	line = "Perspective: V";
 	mlx_string_put(fdata->mlx, fdata->win, 10, 80, TXT_CLR_A, line);
 	line = "5a linea";
 	mlx_string_put(fdata->mlx, fdata->win, 10, 100, TXT_CLR_A, line);

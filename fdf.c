@@ -50,7 +50,7 @@ void	fdfdata_init(t_fdfdata *fdata)
 		fdata->hookmods.scale = escw / 2;
 	if (fdata->hookmods.scale < 1)
 		fdata->hookmods.scale = 2;
-//	printf("escala:%i\n", fdata->hookmods.scale);
+	printf("escala:%i\n", fdata->hookmods.scale);
 	fdata->hookmods.xdispl = 0;
 	fdata->hookmods.ydispl = 0;
 	fdata->hookmods.view = 1;
