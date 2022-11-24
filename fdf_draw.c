@@ -11,7 +11,7 @@ void	ft_start_hooks(t_fdfdata *fdata)
 }
 void	ft_start_draw(t_fdfdata *fdata)
 {
-	ft_clear_image(fdata, BKG_CLR);
+	ft_clear_image(fdata, BKG_CLR_A, BKG_CLR_B);
 	ft_start_line_row(fdata);
 	ft_start_line_col(fdata);
 //	ft_draw_menu(fdata);
@@ -31,7 +31,7 @@ void	ft_start_line_row(t_fdfdata *fdata)
 	while (rows < fdata->map.rowscols.rowx)
 	{
 		cols = 0;
-		while (cols < fdata->map.rowscols.coly - 1)
+		while (cols < (fdata->map.rowscols.coly -1))
 		{
 			begin = ft_iso(fdata, rows, cols, fdata->map.mapdots[rows][cols].hz);
 			end = ft_iso(fdata, rows, cols + 1, fdata->map.mapdots[rows][cols + 1].hz);
@@ -53,7 +53,7 @@ void	ft_start_line_col(t_fdfdata *fdata)
 	while (cols < fdata->map.rowscols.coly)
 	{
 		rows = 0;
-		while (rows < fdata->map.rowscols.rowx - 1)
+		while (rows < (fdata->map.rowscols.rowx - 1))
 		{
 			begin = ft_iso(fdata, rows, cols, fdata->map.mapdots[rows][cols].hz);
 			end = ft_iso(fdata, rows + 1, cols, fdata->map.mapdots[rows + 1][cols].hz);
@@ -72,6 +72,41 @@ void	ft_draw_line(t_fdfdata *fdata, t_coord begin, t_coord end)
 //	printf("End:%d - %d\n", end.rowx, end.coly);
 	
 
+	t_coord	delta;
+	t_coord	sign;
+	t_coord	cur;
+	int		error[2];
+
+	delta.rowx = FT_ABS(end.rowx - begin.rowx);
+//	printf("row done");
+	delta.coly = FT_ABS(end.coly - begin.coly);
+//	printf("col done");
+	sign.rowx = begin.rowx < end.rowx ? 1 : -1;
+//	printf("sin row done");
+	sign.coly = begin.coly < end.coly ? 1 : -1;
+//	printf("sin col  done");
+	error[0] = delta.rowx - delta.coly;
+//	printf("error done");
+	cur = begin;
+//	printf("curr done");
+	while (cur.rowx != end.rowx || cur.coly != end.coly)
+	{
+		ft_light_my_pixel(fdata, cur.rowx, cur.coly, DEF_CLR);
+	//	put_pixel(fdf, cur.x, cur.y, get_color(cur, f, s, delta));
+		if ((error[1] = error[0] * 2) > -delta.coly)
+		{
+			error[0] -= delta.coly;
+			cur.rowx += sign.rowx;
+		}
+		if (error[1] < delta.rowx)
+		{
+			error[0] += delta.rowx;
+			cur.coly += sign.coly;
+		}
+	}
+}
+
+	/*
 // 0 - Distancias que se desplazan en cada eje
 	t_bresnum	bn;
 	
@@ -115,7 +150,7 @@ void	ft_draw_line(t_fdfdata *fdata, t_coord begin, t_coord end)
     // Pinto el primer pixel.
 //	ft_light_my_pixel(fdata, bn.X, bn.Y, DEF_CLR);
     // 4  - Bucle para el trazado de las línea.
-    while (bn.X < end.rowx)
+    while (bn.X < end.rowx) 
 	{
 		ft_light_my_pixel(fdata, bn.X, bn.Y, DEF_CLR);
  //       printf("(%i, %i)\n", bn.X, bn.Y);
@@ -134,5 +169,6 @@ void	ft_draw_line(t_fdfdata *fdata, t_coord begin, t_coord end)
 		}
 //		ft_light_my_pixel(fdata, bn.X, bn.Y, DEF_CLR);
 	}
+//		ft_light_my_pixel(fdata, bn.X, bn.Y, DEF_CLR);
 //	printf("FIN CALCULOS");
-}
+}*/

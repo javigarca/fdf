@@ -13,8 +13,9 @@
 #ifndef FDF_H
 # define FDF_H
 
-# define DEF_CLR 0xAA00FF
-# define BKG_CLR 0x005050
+# define DEF_CLR 0xE2E270
+# define BKG_CLR_A 0x151515
+# define BKG_CLR_B 0x303030
 # define FT_ABS(X) (((X) < 0) ? (-(X)) : (X))
 
 # include <unistd.h>
@@ -108,5 +109,5 @@ void	ft_draw_line(t_fdfdata *fdata, t_coord begin, t_coord end);
 // Draw light //
 void	ft_light_my_pixel(t_fdfdata *fdata, int x, int y, int color);
 void	ft_draw_menu(t_fdfdata *fdata);
-void	ft_clear_image(t_fdfdata *fdata, int color);
+void	ft_clear_image(t_fdfdata *fdata, int color_a, int color_b);
 #endif

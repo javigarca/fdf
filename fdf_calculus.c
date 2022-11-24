@@ -14,7 +14,7 @@ t_coord	ft_iso(t_fdfdata *fdata, int x, int y, int z)
 	isocoord.rowx = (x - y) *  -cos(rad(angle));
 	isocoord.coly = -z + (x + y) * sin(rad(angle));
 	isocoord.rowx += fdata->img_size.rowx / 2;
-	isocoord.coly += (fdata->img_size.coly - fdata->map.rowscols.coly * scale) / 2;
+	isocoord.coly += (fdata->img_size.coly - fdata->map.rowscols.coly) / 2;
 	return (isocoord);
 }
 
