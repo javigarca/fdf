@@ -16,7 +16,7 @@
 # define DEF_CLR 0xE2E270
 # define BKG_CLR_A 0x151515
 # define BKG_CLR_B 0x303030
-# define TXT_CLR_A 0xA2A20F
+# define TXT_CLR_A 0xF7F7DA
 # define TXT_CLR_B 0xAC0FAC
 # define FT_ABS(X) (((X) < 0) ? (-(X)) : (X))
 

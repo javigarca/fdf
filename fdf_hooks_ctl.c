@@ -10,11 +10,12 @@ int	ft_key_press(int key, t_fdfdata *fdata)
 	else if (key == 123 || key == 124
 		|| key == 125 || key == 126)
 		ft_axis_displ(key, fdata);
-	else if ((key >= 83 && key <90) || key == 91 || key == 92)
-		ft_rotate_view(key, fdata);/*
+	else if ((key >= 0 && key <=2) || (key >= 12 && key <= 14))
+			ft_rotate_view(key, fdata);
+	/*
 	else if (key == MAIN_PAD_LESS || key == MAIN_PAD_MORE)
 		flatten(key, fdf);*/
-	else if (key == 9)
+	else if (key == 35)
 		ft_change_view(key, fdata);
 	return (0);
 }

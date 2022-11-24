@@ -9,10 +9,6 @@ int	ft_button_close(t_fdfdata *fdata)
 	return (0);
 }
 
-/*
-   ** Zoom map
-   */
-
 void	ft_scale(int key, t_fdfdata *fdata)
 {
 	if (key == 69 || key == 24 || key == 4)
@@ -28,30 +24,30 @@ void	ft_scale(int key, t_fdfdata *fdata)
 
 void	ft_axis_displ(int key, t_fdfdata *fdata)
 {
-		if (key == 123)
-			fdata->hookmods.xdispl -= 10;
-		else if (key == 124)
-			fdata->hookmods.xdispl += 10;
-		else if (key == 125)
-			fdata->hookmods.ydispl += 10;
-		else
-			fdata->hookmods.ydispl -= 10;
-		ft_start_draw(fdata);
+	if (key == 123)
+		fdata->hookmods.xdispl -= 10;
+	else if (key == 124)
+		fdata->hookmods.xdispl += 10;
+	else if (key == 125)
+		fdata->hookmods.ydispl += 10;
+	else
+		fdata->hookmods.ydispl -= 10;
+	ft_start_draw(fdata);
 }
 
 void	ft_rotate_view(int key, t_fdfdata *fdata)
 {
-	if (key == 84)
+	if (key == 14)
 		fdata->hookmods.z_angle += 0.05;
-	if (key == 91)
+	if (key == 2)
 		fdata->hookmods.z_angle -= 0.05;
-	if (key == 86)
+	if (key == 12)
 		fdata->hookmods.x_angle -= 0.05;
-	if (key == 88)
+	if (key == 0)
 		fdata->hookmods.x_angle += 0.05;
-	if (key == 83 || key == 85)
+	if (key == 13)
 		fdata->hookmods.y_angle += 0.05;
-	if (key == 89 || key == 92)
+	if (key == 1)
 		fdata->hookmods.y_angle -= 0.05;
 	ft_start_draw(fdata);
 }
@@ -76,8 +72,11 @@ void	flatten(int key, t_fdf *fdf)
 */ 
 void	ft_change_view(int key, t_fdfdata *fdata)
 {
-	if (key == 9)
+	if (key == 35)
 	{
+		fdata->hookmods.x_angle = 0;
+		fdata->hookmods.y_angle = 0;
+		fdata->hookmods.z_angle = 0;
 		if (fdata->hookmods.view)
 			fdata->hookmods.view = 0;
 		else
