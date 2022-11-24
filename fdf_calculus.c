@@ -12,7 +12,7 @@ t_coord	ft_cal_pro(t_fdfdata *fdata, int x, int y, int z)
 //	printf("Max: , Min:, z="); 
 	x *= scale;
 	y *= scale;
-	z *= scale;
+	z *= scale / fdata->hookmods.z_height;
 //	printf("x:%i y:%i z:%i", x, y, z);
 //	printf("angle:%i", angle);
 //	printf("X angle:%f", fdata->hookmods.x_angle);

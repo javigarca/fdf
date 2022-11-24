@@ -64,6 +64,7 @@ void	ft_hookmods_init(t_fdfdata *fdata)
 	fdata->hookmods.x_angle = 0;
 	fdata->hookmods.y_angle = 0;
 	fdata->hookmods.z_angle = 0;
+	fdata->hookmods.z_height = 1;
 }
 
 void	ft_set_maxmin_hz(t_fdfdata *fdata, int rows, int cols)

@@ -53,7 +53,7 @@ void	ft_draw_menu(t_fdfdata *fdata)
 	mlx_string_put(fdata->mlx, fdata->win, 10, 140, TXT_CLR_A, line);
 	line = "           Z Axis: E | D";
 	mlx_string_put(fdata->mlx, fdata->win, 10, 155, TXT_CLR_A, line);
-	line = "Height Percentage: G | H";
+	line = "Height Percentage: Z | X";
 	mlx_string_put(fdata->mlx, fdata->win, 10, 175, TXT_CLR_A, line);
 }
 

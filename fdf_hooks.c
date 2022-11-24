@@ -2,9 +2,7 @@
 
 int	ft_button_close(t_fdfdata *fdata)
 {
-//	free(fdata->map.mapdots);
 	fdata = NULL;
-//	system ("leaks fdf");
 	exit(0);
 	return (0);
 }
@@ -51,25 +49,20 @@ void	ft_rotate_view(int key, t_fdfdata *fdata)
 		fdata->hookmods.y_angle -= 0.05;
 	ft_start_draw(fdata);
 }
-/*
 
-   ** Change z value. Make map more flatten
-  
-void	flatten(int key, t_fdf *fdf)
+void	ft_change_height(int key, t_fdfdata *fdata)
 {
-		if (key == MAIN_PAD_LESS)
-					fdf->camera->z_divisor -= 0.1;
-			else if (key == MAIN_PAD_MORE)
-						fdf->camera->z_divisor += 0.1;
-				if (fdf->camera->z_divisor < 0.1)
-							fdf->camera->z_divisor = 0.1;
-					else if (fdf->camera->z_divisor > 10)
-								fdf->camera->z_divisor = 10;
-						draw(fdf->map, fdf);
+	if (key == 6)
+		fdata->hookmods.z_height -= 0.1;
+	else if (key == 7)
+		fdata->hookmods.z_height += 0.1;
+	if (fdata->hookmods.z_height < 0.1)
+		fdata->hookmods.z_height = 0.1;
+	else if (fdata->hookmods.z_height > 10)
+		fdata->hookmods.z_height = 10;
+	ft_start_draw(fdata);
 }
 
-   ** Change projection type
-*/ 
 void	ft_change_view(int key, t_fdfdata *fdata)
 {
 	if (key == 35)

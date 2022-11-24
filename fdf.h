@@ -65,6 +65,7 @@ typedef struct s_mods
 	int		xdispl;
 	int		ydispl;
 	int		view;
+	float	z_height;
 }			t_mods;
 typedef struct s_bresnum
 {
@@ -114,6 +115,7 @@ int		ft_button_close(t_fdfdata *fdata);
 void	ft_scale(int key, t_fdfdata *fdata);
 void	ft_axis_displ(int key, t_fdfdata *fdata);
 void	ft_change_view(int key, t_fdfdata *fdata);
+void	ft_change_height(int key, t_fdfdata *fdata);
 // Hooks Control //
 int		ft_key_press(int key, t_fdfdata *fdata);
 int		ft_mouse_press(int button, int x, int y, t_fdfdata *fdata);
