@@ -9,7 +9,8 @@ int	main(int argc, char **argv)
 		
 		fdata.map = ft_read_map(argv[1]);
 		fdata.map_name = argv[1];
-		fdfdata_init(&fdata);
+		ft_fdfdata_init(&fdata);
+		ft_hookmods_init(&fdata);
 //		ft_putstr_fd("\nAHORA EL MAPA\n", 1);
 //		printf("\nSon rows:%i y cols:%i.", fdata.map.rowscols.rowx, \
 //				fdata.map.rowscols.coly);
@@ -28,22 +29,25 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-void	fdfdata_init(t_fdfdata *fdata)
+void	ft_fdfdata_init(t_fdfdata *fdata)
 {
-	int escw;
-	int esch;
-
 	fdata->mlx = mlx_init();
 	fdata->win_size.rowx = 1600;
 	fdata->win_size.coly = 900;
 	fdata->img_size.rowx = 1280;
 	fdata->img_size.coly = 900;
-	esch = (fdata->img_size.coly / fdata->map.rowscols.coly / 2);
-	escw = (fdata->img_size.rowx / fdata->map.rowscols.rowx / 2);
 	fdata->win = mlx_new_window(fdata->mlx, fdata->win_size.rowx, fdata->win_size.coly, "FDF");
 	fdata->img = mlx_new_image(fdata->mlx, fdata->img_size.rowx, fdata->img_size.coly);
 	fdata->imgadd = mlx_get_data_addr(fdata->img, &fdata->pixel_b, &fdata->lines_b, &fdata->endian);
-	fdata->hookmods.angle = 30;
+}
+
+void	ft_hookmods_init(t_fdfdata *fdata)
+{
+	int escw;
+	int esch;
+
+	esch = (fdata->img_size.coly / fdata->map.rowscols.coly / 2);
+	escw = (fdata->img_size.rowx / fdata->map.rowscols.rowx / 2);
 	if (esch < escw )
 		fdata->hookmods.scale = esch / 2;
 	else
@@ -51,7 +55,11 @@ void	fdfdata_init(t_fdfdata *fdata)
 	if (fdata->hookmods.scale < 1)
 		fdata->hookmods.scale = 2;
 	printf("escala:%i\n", fdata->hookmods.scale);
+	fdata->hookmods.angle = 30;
 	fdata->hookmods.xdispl = 0;
 	fdata->hookmods.ydispl = 0;
 	fdata->hookmods.view = 1;
+	fdata->hookmods.x_angle = 0;
+	fdata->hookmods.y_angle = 0;
+	fdata->hookmods.z_angle = 0;
 }

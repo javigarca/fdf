@@ -21,6 +21,7 @@ FDF			=	fdf.c \
 				fdf_calculus.c \
 				fdf_draw.c \
 				fdf_draw_light.c \
+				fdf_draw_rotations.c \
 			
 # Sources and objects
 

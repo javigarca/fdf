@@ -1,18 +1,5 @@
 #include "fdf.h"
 
-/*int	ft_key_close(int key, t_fdfdata	*fdata)
-{
-	if (key == 53)
-	{
-		ft_button_close(fdata)
-	//	free(fdata->map.mapdots);
-	//	fdata = NULL;
-//		system ("leaks fdf");
-	//	exit(0);
-	}
-	return (0);
-}*/
-
 int	ft_button_close(t_fdfdata *fdata)
 {
 //	free(fdata->map.mapdots);
@@ -52,28 +39,23 @@ void	ft_axis_displ(int key, t_fdfdata *fdata)
 		ft_start_draw(fdata);
 }
 
-/*
-   ** Rotate map
-   
-void	rotate(int key, t_fdf *fdf)
+void	ft_rotate_view(int key, t_fdfdata *fdata)
 {
-		if (key == NUM_PAD_2 || key == MAIN_PAD_2)
-					fdf->camera->alpha += 0.05;
-			else if (key == NUM_PAD_8 || key == MAIN_PAD_8)
-						fdf->camera->alpha -= 0.05;
-				else if (key == NUM_PAD_4 || key == MAIN_PAD_4)
-							fdf->camera->beta -= 0.05;
-					else if (key == NUM_PAD_6 || key == MAIN_PAD_6)
-								fdf->camera->beta += 0.05;
-						else if (key == NUM_PAD_1 || key == MAIN_PAD_1
-										|| key == NUM_PAD_3 || key == MAIN_PAD_3)
-									fdf->camera->gamma += 0.05;
-							else if (key == NUM_PAD_7 || key == MAIN_PAD_7
-											|| key == NUM_PAD_9 || key == MAIN_PAD_9)
-										fdf->camera->gamma -= 0.05;
-								draw(fdf->map, fdf);
+	if (key == 84)
+		fdata->hookmods.z_angle += 0.05;
+	if (key == 91)
+		fdata->hookmods.z_angle -= 0.05;
+	if (key == 86)
+		fdata->hookmods.x_angle -= 0.05;
+	if (key == 88)
+		fdata->hookmods.x_angle += 0.05;
+	if (key == 83 || key == 85)
+		fdata->hookmods.y_angle += 0.05;
+	if (key == 89 || key == 92)
+		fdata->hookmods.y_angle -= 0.05;
+	ft_start_draw(fdata);
 }
-
+/*
 
    ** Change z value. Make map more flatten
   

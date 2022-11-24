@@ -46,11 +46,14 @@ typedef struct s_map
 }			t_map;
 typedef struct s_mods
 {
-	int	angle;
-	int scale;
-	int	xdispl;
-	int ydispl;
-	int view;
+	int		angle;
+	double	x_angle;
+	double	y_angle;
+	double	z_angle;
+	int		scale;
+	int		xdispl;
+	int		ydispl;
+	int		view;
 }			t_mods;
 typedef struct s_bresnum
 {
@@ -84,7 +87,8 @@ typedef struct s_fdfdata
 
 }			t_fdfdata;
 
-void	fdfdata_init(t_fdfdata *fdata);
+void	ft_fdfdata_init(t_fdfdata *fdata);
+void	ft_hookmods_init(t_fdfdata *fdata);
 // Map //
 t_map	ft_read_map(char *namefile);
 t_dot	**ft_load_mapdots(int fd, int rows, int cols);
@@ -92,7 +96,7 @@ int		ft_countcols(const char *str, char c);
 t_coord	ft_rows_cols_check(int fd);
 void	ft_print_map(t_map maptoprint, int rows, int cols);
 // Hooks //
-int		ft_key_close(int key, t_fdfdata *fdata);
+void	ft_rotate_view(int key, t_fdfdata *fdata);
 int		ft_button_close(t_fdfdata *fdata);
 void	ft_scale(int key, t_fdfdata *fdata);
 void	ft_axis_displ(int key, t_fdfdata *fdata);
@@ -116,4 +120,8 @@ void	ft_draw_line(t_fdfdata *fdata, t_coord begin, t_coord end);
 void	ft_light_my_pixel(t_fdfdata *fdata, int x, int y, int color);
 void	ft_draw_menu(t_fdfdata *fdata);
 void	ft_clear_image(t_fdfdata *fdata, int color_a, int color_b);
+// Rotations //
+void	ft_rotate_x_axis(int *y, int *z, double x_angle);
+void	ft_rotate_y_axis(int *x, int *z, double y_angle);
+void	ft_rotate_z_axis(int *x, int *y, double z_angle);
 #endif
