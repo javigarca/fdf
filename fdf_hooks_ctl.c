@@ -1,8 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf_hooks_ctl.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: javigarc <javigarc@student.42urduli>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/13 15:38:38 by javigarc          #+#    #+#             */
+/*   Updated: 2022/11/25 13:57:22 by javigarc         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
 int	ft_key_press(int key, t_fdfdata *fdata)
 {
-
 	if (key == 53)
 		exit(0);
 	if (key == 69 || key == 24 || key == 78 || key == 27)
@@ -10,7 +21,7 @@ int	ft_key_press(int key, t_fdfdata *fdata)
 	else if (key == 123 || key == 124
 		|| key == 125 || key == 126)
 		ft_axis_displ(key, fdata);
-	else if ((key >= 0 && key <=2) || (key >= 12 && key <= 14))
+	else if ((key >= 0 && key <= 2) || (key >= 12 && key <= 14))
 		ft_rotate_view(key, fdata);
 	else if (key == 6 || key == 7)
 		ft_change_height(key, fdata);
@@ -18,56 +29,10 @@ int	ft_key_press(int key, t_fdfdata *fdata)
 		ft_change_view(key, fdata);
 	return (0);
 }
-/*
-int			mouse_press(int button, int x, int y, void *param)
-{
-	t_fdf	*fdf;
 
-	(void)x;
-	(void)y;
-	fdf = (t_fdf *)param;
-	if (button == MOUSE_SCROLL_UP || button == MOUSE_SCROLL_DOWN)
-		zoom(button, fdf);
-	else if (button == MOUSE_LEFT_BUTTON)
-		fdf->mouse->is_pressed = true;
+int	ft_button_close(t_fdfdata *fdata)
+{
+	fdata = NULL;
+	exit(0);
 	return (0);
 }
-
-
-** Handle mouse release
-
-
-int			mouse_release(int button, int x, int y, void *param)
-{
-	t_fdf	*fdf;
-
-	(void)x;
-	(void)y;
-	(void)button;
-	fdf = (t_fdf *)param;
-	fdf->mouse->is_pressed = false;
-	return (0);
-}
-
-
-** Handle mouse move
-
-
-int			mouse_move(int x, int y, void *param)
-{
-	t_fdf	*fdf;
-
-	fdf = (t_fdf *)param;
-	fdf->mouse->previous_x = fdf->mouse->x;
-	fdf->mouse->previous_y = fdf->mouse->y;
-	fdf->mouse->x = x;
-	fdf->mouse->y = y;
-	if (fdf->mouse->is_pressed)
-	{
-		fdf->camera->beta += (x - fdf->mouse->previous_x) * 0.002;
-		fdf->camera->alpha += (y - fdf->mouse->previous_y) * 0.002;
-		draw(fdf->map, fdf);
-	}
-	return (0);
-}
-*/

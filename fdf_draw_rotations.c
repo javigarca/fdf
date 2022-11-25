@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf_draw_rotations.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: javigarc <javigarc@student.42urduli>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/13 15:38:38 by javigarc          #+#    #+#             */
+/*   Updated: 2022/11/25 13:55:06 by javigarc         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
 void	ft_rotate_x_axis(int *y, int *z, double x_angle)
 {
-	int prev_y;
-	int prev_z;
+	int	prev_y;
+	int	prev_z;
 
 	prev_y = *y;
 	prev_z = *z;
@@ -13,8 +25,8 @@ void	ft_rotate_x_axis(int *y, int *z, double x_angle)
 
 void	ft_rotate_y_axis(int *x, int *z, double y_angle)
 {
-	int prev_x;
-	int prev_z;
+	int	prev_x;
+	int	prev_z;
 
 	prev_x = *x;
 	prev_z = *z;
@@ -24,8 +36,8 @@ void	ft_rotate_y_axis(int *x, int *z, double y_angle)
 
 void	ft_rotate_z_axis(int *x, int *y, double z_angle)
 {
-	int prev_x;
-	int prev_y;
+	int	prev_x;
+	int	prev_y;
 
 	prev_x = *x;
 	prev_y = *y;

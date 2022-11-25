@@ -1,40 +1,57 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf_color.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: javigarc <javigarc@student.42urduli>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/13 15:38:38 by javigarc          #+#    #+#             */
+/*   Updated: 2022/11/25 13:56:44 by javigarc         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
-double ft_percent(int start, int end, int current)
+double	ft_percent(int start, int end, int current)
 {
-    double placement;
-    double distance;
+	double	placement;
+	double	distance;
 
-    placement = current - start;
-    distance = end - start;
-    return ((distance == 0) ? 1.0 : (placement / distance));
+	placement = current - start;
+	distance = end - start;
+	if (distance == 0)
+		return (1.0);
+	else
+		return (placement / distance);
 }
 
-int ft_get_light(int start, int end, double percentage)
+int	ft_get_light(int start, int end, double percentage)
 {
-    return ((int)((1 - percentage) * start + percentage * end));
+	return ((int)((1 - percentage) * start + percentage * end));
 }
 
-int ft_get_color(t_coord current, t_coord begin, t_coord end, t_coord delta)
+int	ft_get_color(t_coord cur, t_coord beg, t_coord end, t_coord del)
 {
-    int     red;
-    int     green;
-    int     blue;
-    double  percentage;
+	int		red;
+	int		green;
+	int		blue;
+	double	percentage;
 
-	if (current.color == end.color)
-		return (current.color);
-    if (delta.rowx > delta.coly)
-        percentage = ft_percent(begin.rowx, end.rowx, current.rowx);
-    else
-        percentage = ft_percent(begin.coly, end.coly, current.coly);
-    red = ft_get_light((begin.color >> 16) & 0xFF, (end.color >> 16) & 0xFF, percentage);
-    green = ft_get_light((begin.color >> 8) & 0xFF, (end.color >> 8) & 0xFF, percentage);
-    blue = ft_get_light(begin.color & 0xFF, end.color & 0xFF, percentage);
-    return ((red << 16) | (green << 8) | blue);
+	if (cur.color == end.color)
+		return (cur.color);
+	if (del.rowx > del.coly)
+		percentage = ft_percent(beg.rowx, end.rowx, cur.rowx);
+	else
+		percentage = ft_percent(beg.coly, end.coly, cur.coly);
+	red = ft_get_light((beg.color >> 16) & 0xFF, (end.color >> 16) & 0xFF,
+			percentage);
+	green = ft_get_light((beg.color >> 8) & 0xFF, (end.color >> 8) & 0xFF,
+			percentage);
+	blue = ft_get_light(beg.color & 0xFF, end.color & 0xFF, percentage);
+	return ((red << 16) | (green << 8) | blue);
 }
 
-int		ft_dot_color(double percentage)
+int	ft_dot_color(double percentage)
 {
 	if (percentage < 0.1)
 		return (P10_CLR);

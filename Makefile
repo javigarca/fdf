@@ -65,8 +65,8 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 
-.c.o:
-	${GCC} ${FLAGS} $(INCLUDE) -c $< -o ${<:.c=.o}
+#.c.o:
+#	${GCC} ${FLAGS} $(INCLUDE) -c $< -o ${<:.c=.o}
 
 re:	fclean all
 

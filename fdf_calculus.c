@@ -1,47 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf_calculus.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: javigarc <javigarc@student.42urduli>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/13 15:38:38 by javigarc          #+#    #+#             */
+/*   Updated: 2022/11/25 13:56:14 by javigarc         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
 t_coord	ft_cal_pro(t_fdfdata *fdata, int x, int y, int z)
 {
 	t_coord	coord;
-	int		angle;
 	int		scale;
 
-	angle = fdata->hookmods.angle;
 	scale = fdata->hookmods.scale;
 	coord.color = ft_dot_color(ft_percent(fdata->min_hz, fdata->max_hz, z));
-//	printf("Max: , Min:, z="); 
 	x *= scale;
 	y *= scale;
 	z *= scale / fdata->hookmods.z_height;
-//	printf("x:%i y:%i z:%i", x, y, z);
-//	printf("angle:%i", angle);
-//	printf("X angle:%f", fdata->hookmods.x_angle);
-//	printf("*Y angle:%f", fdata->hookmods.y_angle);
-//	printf("*Z angle:%f\r", fdata->hookmods.z_angle);
 	ft_rotate_x_axis(&y, &z, fdata->hookmods.x_angle);
 	ft_rotate_y_axis(&x, &z, fdata->hookmods.y_angle);
 	ft_rotate_z_axis(&x, &y, fdata->hookmods.z_angle);
-//	printf("x:%i y:%i z:%i\n", x, y, z);
-//	printf("view=%i", fdata->hookmods.view);
 	if (fdata->hookmods.view != 0)
 	{
-		coord.rowx = (x - y) *  -cos(rad(angle));
-		coord.coly = -z + (x + y) * sin(rad(angle));
+		coord.rowx = (x - y) * -cos(rad(30));
+		coord.coly = -z + (x + y) * sin(rad(30));
 	}
 	else
 	{
-		angle = 15;
-//		coord.rowx = x * cos(rad(360)) + y;
-//		coord.coly = x * sin(rad(360)) - z;
-//		coord.rowx = x;
-//		coord.coly = y;
-		coord.rowx = (x - y) *  -cos(rad(angle));
-		angle = 60;
-		coord.coly = (x + y) * sin(rad(angle));
+		coord.rowx = (x - y) * -cos(rad(15));
+		coord.coly = (x + y) * sin(rad(15));
 	}
-//	printf("angle:%i coordX:%i coordY:%i\n", angle, coord.rowx, coord.coly);
 	coord.rowx += (fdata->img_size.rowx / 2) + fdata->hookmods.xdispl;
-	coord.coly += ((fdata->img_size.coly - fdata->map.rowscols.coly) / 2) + fdata->hookmods.ydispl;
+	coord.coly += ((fdata->img_size.coly - fdata->map.rowscols.coly) / 2)
+		+ fdata->hookmods.ydispl;
 	return (coord);
 }
 
@@ -57,4 +53,12 @@ void	ft_swap(int *a, int *b)
 	c = *a;
 	*a = *b;
 	*b = c;
+}
+
+int	ft_abs(int x)
+{
+	if (x < 0)
+		return (-(x));
+	else
+		return ((x));
 }

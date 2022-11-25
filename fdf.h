@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: javigarc <javigarc@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:38:38 by javigarc          #+#    #+#             */
-/*   Updated: 2022/07/13 15:38:55 by javigarc         ###   ########.fr       */
+/*   Updated: 2022/11/25 14:28:28 by javigarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@
 # define BKG_CLR_B 0x303030
 # define TXT_CLR_A 0xF7F7DA
 # define TXT_CLR_B 0xAC0FAC
-# define FT_ABS(X) (((X) < 0) ? (-(X)) : (X))
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -55,6 +54,13 @@ typedef struct s_map
 	t_dot	**mapdots;
 	t_coord	rowscols;
 }			t_map;
+typedef struct s_bnum
+{
+	t_coord	delta;
+	t_coord	sign;
+	t_coord	cur;
+	int		error[2];
+}			t_bnum;
 typedef struct s_mods
 {
 	int		angle;
@@ -67,21 +73,6 @@ typedef struct s_mods
 	int		view;
 	float	z_height;
 }			t_mods;
-typedef struct s_bresnum
-{
-	int	dY;
-	int dX;
-	int IncYi;
-	int IncYr;
-	int IncXi;
-	int IncXr;
-	int X;
-	int Y;
-	int av;
-	int	avI;
-	int	avR;
-}
-			t_bresnum;
 typedef struct s_fdfdata
 {
 	void	*mlx;
@@ -111,20 +102,18 @@ t_coord	ft_rows_cols_check(int fd);
 void	ft_print_map(t_map maptoprint, int rows, int cols);
 // Hooks //
 void	ft_rotate_view(int key, t_fdfdata *fdata);
-int		ft_button_close(t_fdfdata *fdata);
 void	ft_scale(int key, t_fdfdata *fdata);
 void	ft_axis_displ(int key, t_fdfdata *fdata);
 void	ft_change_view(int key, t_fdfdata *fdata);
 void	ft_change_height(int key, t_fdfdata *fdata);
 // Hooks Control //
 int		ft_key_press(int key, t_fdfdata *fdata);
-int		ft_mouse_press(int button, int x, int y, t_fdfdata *fdata);
-int		ft_mouse_release(int button, int x, int y, t_fdfdata *fdata);
-int		ft_mouse_move(int x, int y, t_fdfdata *fdata);
+int		ft_button_close(t_fdfdata *fdata);
 // Calculus //
 double	rad(int deg);
 t_coord	ft_cal_pro(t_fdfdata *fdata, int x, int y, int z);
 void	ft_swap(int *a, int *b);
+int		ft_abs(int x);
 // Draw //
 void	ft_start_hooks(t_fdfdata *fdata);
 void	ft_start_draw(t_fdfdata *fdata);
@@ -133,8 +122,10 @@ void	ft_start_line_col(t_fdfdata *fdata);
 void	ft_draw_line(t_fdfdata *fdata, t_coord begin, t_coord end);
 // Draw light //
 void	ft_light_my_pixel(t_fdfdata *fdata, int x, int y, int color);
-void	ft_draw_menu(t_fdfdata *fdata);
+void	ft_draw_menu(t_fdfdata *fdata, char *line);
 void	ft_clear_image(t_fdfdata *fdata, int color_a, int color_b);
+void	ft_light_line(t_fdfdata *fdata, t_coord begin, \
+		t_coord end, t_bnum bnum);
 // Rotations //
 void	ft_rotate_x_axis(int *y, int *z, double x_angle);
 void	ft_rotate_y_axis(int *x, int *z, double y_angle);
@@ -142,6 +133,6 @@ void	ft_rotate_z_axis(int *x, int *y, double z_angle);
 // Color //
 double	ft_percent(int start, int end, int current);
 int		ft_get_light(int start, int end, double percentage);
-int		ft_get_color(t_coord current, t_coord begin, t_coord end, t_coord delta);
+int		ft_get_color(t_coord cur, t_coord beg, t_coord end, t_coord del);
 int		ft_dot_color(double percentage);
 #endif
