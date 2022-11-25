@@ -6,7 +6,7 @@
 /*   By: javigarc <javigarc@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:38:38 by javigarc          #+#    #+#             */
-/*   Updated: 2022/11/25 14:28:28 by javigarc         ###   ########.fr       */
+/*   Updated: 2022/11/25 18:31:35 by javigarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ void	ft_draw_line(t_fdfdata *fdata, t_coord begin, t_coord end);
 // Draw light //
 void	ft_light_my_pixel(t_fdfdata *fdata, int x, int y, int color);
 void	ft_draw_menu(t_fdfdata *fdata, char *line);
+void	ft_draw_scale(t_fdfdata *fdata);
 void	ft_clear_image(t_fdfdata *fdata, int color_a, int color_b);
 void	ft_light_line(t_fdfdata *fdata, t_coord begin, \
 		t_coord end, t_bnum bnum);

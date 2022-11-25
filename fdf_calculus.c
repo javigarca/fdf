@@ -6,7 +6,7 @@
 /*   By: javigarc <javigarc@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:38:38 by javigarc          #+#    #+#             */
-/*   Updated: 2022/11/25 13:56:14 by javigarc         ###   ########.fr       */
+/*   Updated: 2022/11/25 17:38:35 by javigarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_coord	ft_cal_pro(t_fdfdata *fdata, int x, int y, int z)
 	else
 	{
 		coord.rowx = (x - y) * -cos(rad(15));
-		coord.coly = (x + y) * sin(rad(15));
+		coord.coly = -z + (x + y) * sin(rad(15));
 	}
 	coord.rowx += (fdata->img_size.rowx / 2) + fdata->hookmods.xdispl;
 	coord.coly += ((fdata->img_size.coly - fdata->map.rowscols.coly) / 2)

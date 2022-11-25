@@ -6,7 +6,7 @@
 /*   By: javigarc <javigarc@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:38:38 by javigarc          #+#    #+#             */
-/*   Updated: 2022/11/25 14:28:54 by javigarc         ###   ########.fr       */
+/*   Updated: 2022/11/25 18:38:23 by javigarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ int	main(int argc, char **argv)
 
 	if (argc == 2)
 	{
-		ft_putstr_fd("\rReading map...", 1);
+		ft_putstr_fd("\rChecking file...", 1);
 		fdata.map = ft_read_map(argv[1]);
+		ft_putstr_fd("\rReading map...", 1);
 		fdata.map_name = argv[1];
 		ft_putstr_fd("\rIniciating...", 1);
 		ft_fdfdata_init(&fdata);
@@ -28,6 +29,7 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("\rCalculating...", 1);
 		ft_start_draw(&fdata);
 		ft_draw_menu(&fdata, argv[1]);
+		ft_draw_scale(&fdata);
 		ft_putstr_fd("\r\nDone!", 1);
 		mlx_loop(fdata.mlx);
 	}

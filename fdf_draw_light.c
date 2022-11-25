@@ -6,7 +6,7 @@
 /*   By: javigarc <javigarc@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:38:38 by javigarc          #+#    #+#             */
-/*   Updated: 2022/11/25 14:30:58 by javigarc         ###   ########.fr       */
+/*   Updated: 2022/11/25 19:00:18 by javigarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,23 @@ void	ft_draw_menu(t_fdfdata *fdata, char *line)
 	line = "------------------------------";
 	mlx_string_put(fdata->mlx, fdata->win, 10, 30, DEF_CLR, line);
 	line = "Move Axis X,Y: Arrow Keys";
-	mlx_string_put(fdata->mlx, fdata->win, 10, 50, TXT_CLR_A, line);
+	mlx_string_put(fdata->mlx, fdata->win, 15, 50, TXT_CLR_A, line);
 	line = "Zoom: + | -";
-	mlx_string_put(fdata->mlx, fdata->win, 10, 70, TXT_CLR_A, line);
+	mlx_string_put(fdata->mlx, fdata->win, 15, 70, TXT_CLR_A, line);
 	line = "Perspective: P";
-	mlx_string_put(fdata->mlx, fdata->win, 10, 90, TXT_CLR_A, line);
+	mlx_string_put(fdata->mlx, fdata->win, 15, 90, TXT_CLR_A, line);
 	line = "Rotation";
-	mlx_string_put(fdata->mlx, fdata->win, 10, 110, TXT_CLR_A, line);
+	mlx_string_put(fdata->mlx, fdata->win, 15, 110, TXT_CLR_A, line);
 	line = "       X Axis: Q | A";
-	mlx_string_put(fdata->mlx, fdata->win, 10, 125, TXT_CLR_A, line);
+	mlx_string_put(fdata->mlx, fdata->win, 15, 125, TXT_CLR_A, line);
 	line = "       Y Axis: W | S";
-	mlx_string_put(fdata->mlx, fdata->win, 10, 140, TXT_CLR_A, line);
+	mlx_string_put(fdata->mlx, fdata->win, 15, 140, TXT_CLR_A, line);
 	line = "       Z Axis: E | D";
-	mlx_string_put(fdata->mlx, fdata->win, 10, 155, TXT_CLR_A, line);
+	mlx_string_put(fdata->mlx, fdata->win, 15, 155, TXT_CLR_A, line);
 	line = "Height: Z | X";
-	mlx_string_put(fdata->mlx, fdata->win, 10, 175, TXT_CLR_A, line);
+	mlx_string_put(fdata->mlx, fdata->win, 15, 175, TXT_CLR_A, line);
 	line = "Terminate: ESC";
-	mlx_string_put(fdata->mlx, fdata->win, 10, 195, TXT_CLR_A, line);
+	mlx_string_put(fdata->mlx, fdata->win, 15, 195, TXT_CLR_A, line);
 }
 
 void	ft_clear_image(t_fdfdata *fdata, int color_a, int color_b)
@@ -94,4 +94,26 @@ void	ft_light_line(t_fdfdata *fdata, t_coord begin, t_coord end, t_bnum num)
 			num.cur.coly += num.sign.coly;
 		}
 	}
+}
+
+void	ft_draw_scale(t_fdfdata *fdata)
+{
+	char	*line;
+	int		x;
+
+	x = 95;
+	mlx_string_put(fdata->mlx, fdata->win, (x - 7), 400, TXT_CLR_B, \
+			"COLOR SCALE");
+	line = "      ---------------";
+	mlx_string_put(fdata->mlx, fdata->win, 10, 410, DEF_CLR, line);
+	mlx_string_put(fdata->mlx, fdata->win, x, 425, P00_CLR, "90 - 100 \%");
+	mlx_string_put(fdata->mlx, fdata->win, x, 445, P90_CLR, "80 - 90 \%");
+	mlx_string_put(fdata->mlx, fdata->win, x, 465, P80_CLR, "70 - 80 \%");
+	mlx_string_put(fdata->mlx, fdata->win, x, 485, P70_CLR, "60 - 70 \%");
+	mlx_string_put(fdata->mlx, fdata->win, x, 505, P60_CLR, "50 - 60 \%");
+	mlx_string_put(fdata->mlx, fdata->win, x, 525, P50_CLR, "40 - 50 \%");
+	mlx_string_put(fdata->mlx, fdata->win, x, 545, P40_CLR, "30 - 40 \%");
+	mlx_string_put(fdata->mlx, fdata->win, x, 565, P30_CLR, "20 - 30 \%");
+	mlx_string_put(fdata->mlx, fdata->win, x, 585, P20_CLR, "10 - 20 \%");
+	mlx_string_put(fdata->mlx, fdata->win, x, 605, P10_CLR, " 0 - 10 \%");
 }

@@ -6,7 +6,7 @@
 /*   By: javigarc <javigarc@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:38:38 by javigarc          #+#    #+#             */
-/*   Updated: 2022/11/25 13:57:54 by javigarc         ###   ########.fr       */
+/*   Updated: 2022/11/25 17:28:08 by javigarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,11 @@ t_map	ft_read_map(char *namefile)
 	else
 	{
 		ft_putstr_fd("Error. Invalid file.\n", 2);
+		exit(1);
+	}
+	if ((!maptoload.rowscols.rowx) || (!maptoload.rowscols.coly))
+	{
+		ft_putstr_fd("Error. Incorrect map file.\n", 2);
 		exit(1);
 	}
 	return (maptoload);
