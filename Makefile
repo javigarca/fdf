@@ -6,7 +6,7 @@
 #    By: javigarc <javigarc@student.42urduli>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/13 15:38:08 by javigarc          #+#    #+#              #
-#    Updated: 2022/07/13 15:38:18 by javigarc         ###   ########.fr        #
+#    Updated: 2022/11/25 14:45:58 by javigarc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,6 @@ GCC			=	gcc
 FLAGS		=	-Wall -Wextra -Werror -g3 -fsanitize=address
 #-g3 -fsanitize=address
 
-INCLUDE		=	-I include
-
 NAME		=	fdf
 
 LIBMK		=	cd mlx && make
@@ -65,8 +63,8 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 
-#.c.o:
-#	${GCC} ${FLAGS} $(INCLUDE) -c $< -o ${<:.c=.o}
+.c.o:
+	${GCC} ${FLAGS} $(INCLUDE) -c $< -o ${<:.c=.o}
 
 re:	fclean all
 
