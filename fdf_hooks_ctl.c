@@ -6,7 +6,7 @@
 /*   By: javigarc <javigarc@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:38:38 by javigarc          #+#    #+#             */
-/*   Updated: 2022/11/25 13:57:22 by javigarc         ###   ########.fr       */
+/*   Updated: 2022/11/28 22:51:49 by javigarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,12 @@
 int	ft_key_press(int key, t_fdfdata *fdata)
 {
 	if (key == 53)
+	{
+		ft_free_fdf(fdata);
+		fdata = NULL;
+		system ("leaks fdf");
 		exit(0);
+	}
 	if (key == 69 || key == 24 || key == 78 || key == 27)
 		ft_scale(key, fdata);
 	else if (key == 123 || key == 124
@@ -32,7 +37,9 @@ int	ft_key_press(int key, t_fdfdata *fdata)
 
 int	ft_button_close(t_fdfdata *fdata)
 {
+//	free (fdata);
 	fdata = NULL;
+	system ("leaks fdf");
 	exit(0);
 	return (0);
 }

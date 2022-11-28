@@ -6,7 +6,7 @@
 #    By: javigarc <javigarc@student.42urduli>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/13 15:38:08 by javigarc          #+#    #+#              #
-#    Updated: 2022/11/25 14:45:58 by javigarc         ###   ########.fr        #
+#    Updated: 2022/11/28 16:40:23 by javigarc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ OBJS		=	$(FDF_OBJS)
 
 GCC			=	gcc
 
-FLAGS		=	-Wall -Wextra -Werror -g3 -fsanitize=address
+FLAGS		=	-Wall -Wextra -Werror
 #-g3 -fsanitize=address
 
 NAME		=	fdf

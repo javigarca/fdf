@@ -6,7 +6,7 @@
 /*   By: javigarc <javigarc@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:38:38 by javigarc          #+#    #+#             */
-/*   Updated: 2022/11/25 17:28:08 by javigarc         ###   ########.fr       */
+/*   Updated: 2022/11/28 22:48:36 by javigarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,18 @@ t_coord	ft_rows_cols_check(int fd)
 	t_coord	coords;
 	char	*line;
 
-	line = NULL;
 	rows = 0;
 	line = get_next_line(fd);
 	colscheck = ft_countcols(line, ' ');
-	while (line != NULL)
+	while (line)
 	{
 		rows++;
+		free(line);
 		line = get_next_line(fd);
 	}
 	coords.rowx = rows;
 	coords.coly = colscheck;
+//	free(line);
 	return (coords);
 }
 
@@ -91,6 +92,7 @@ t_map	ft_read_map(char *namefile)
 		fd = open(namefile, O_RDWR);
 		maptoload.mapdots = ft_load_mapdots(fd, maptoload.rowscols.rowx, \
 				maptoload.rowscols.coly);
+		close(fd);
 	}
 	else
 	{
@@ -127,8 +129,9 @@ t_dot	**ft_load_mapdots(int fd, int rows, int cols)
 		{
 			dotstoload[x][y].hz = ft_atoi(lines[y]);
 			dotstoload[x][y].dotcolor = DEF_CLR;
+			free(lines[y]);
 		}
-		lines = NULL;
+		free (lines);
 	}
 	return (dotstoload);
 }
