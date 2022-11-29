@@ -6,7 +6,7 @@
 /*   By: javigarc <javigarc@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:38:38 by javigarc          #+#    #+#             */
-/*   Updated: 2022/11/28 18:59:46 by javigarc         ###   ########.fr       */
+/*   Updated: 2022/11/29 11:02:10 by javigarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,14 @@ typedef struct s_map
 	t_dot	**mapdots;
 	t_coord	rowscols;
 }			t_map;
+typedef struct s_maplines
+{
+	char	**lines;
+	char	*line;
+	int		x;
+	int		y;
+	t_dot	**dotstoload;
+}			t_maplines;
 typedef struct s_bnum
 {
 	t_coord	delta;
@@ -94,7 +102,6 @@ typedef struct s_fdfdata
 void	ft_fdfdata_init(t_fdfdata *fdata);
 void	ft_hookmods_init(t_fdfdata *fdata);
 void	ft_set_maxmin_hz(t_fdfdata *fdata, int rows, int cols);
-void	ft_free_fdf(t_fdfdata *fdata);
 // Map //
 t_map	ft_read_map(char *namefile);
 t_dot	**ft_load_mapdots(int fd, int rows, int cols);

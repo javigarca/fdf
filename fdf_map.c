@@ -6,7 +6,7 @@
 /*   By: javigarc <javigarc@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:38:38 by javigarc          #+#    #+#             */
-/*   Updated: 2022/11/28 22:48:36 by javigarc         ###   ########.fr       */
+/*   Updated: 2022/11/29 12:23:52 by javigarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,17 @@ t_coord	ft_rows_cols_check(int fd)
 	while (line)
 	{
 		rows++;
+		if (colscheck != ft_countcols(line, ' '))
+		{
+			ft_putstr_fd("Error. Bad formatted map.\n", 1);
+			exit(1);
+		}
 		free(line);
 		line = get_next_line(fd);
 	}
 	coords.rowx = rows;
 	coords.coly = colscheck;
-//	free(line);
+	free(line);
 	return (coords);
 }
 
@@ -109,29 +114,29 @@ t_map	ft_read_map(char *namefile)
 
 t_dot	**ft_load_mapdots(int fd, int rows, int cols)
 {
-	t_dot	**dotstoload;
-	char	**lines;
-	int		x;
-	int		y;
+	t_maplines	ml;
 
-	x = -1;
-	dotstoload = (t_dot **) malloc(sizeof (t_dot *) * rows);
-	if (!dotstoload)
+	ml.x = -1;
+	ml.dotstoload = (t_dot **) malloc(sizeof (t_dot *) * rows);
+	if (!ml.dotstoload)
 		exit(1);
-	while (++x < rows)
+	while (++ml.x < rows)
 	{
-		dotstoload[x] = (t_dot *) malloc(sizeof (t_dot) * cols);
-		if (dotstoload[x] == NULL)
+		ml.dotstoload[ml.x] = (t_dot *) malloc(sizeof (t_dot) * cols);
+		if (!ml.dotstoload[ml.x])
 			exit(1);
-		lines = ft_split(get_next_line(fd), ' ');
-		y = -1;
-		while (++y < cols)
+		ml.line = get_next_line(fd);
+		ml.lines = ft_split(ml.line, ' ');
+		ml.y = -1;
+		while (++ml.y < cols)
 		{
-			dotstoload[x][y].hz = ft_atoi(lines[y]);
-			dotstoload[x][y].dotcolor = DEF_CLR;
-			free(lines[y]);
+			ml.dotstoload[ml.x][ml.y].hz = ft_atoi(ml.lines[ml.y]);
+			ml.dotstoload[ml.x][ml.y].dotcolor = DEF_CLR;
+			free(ml.lines[ml.y]);
 		}
-		free (lines);
+		free (ml.lines);
+		free (ml.line);
+		ml.line = NULL;
 	}
-	return (dotstoload);
+	return (ml.dotstoload);
 }
