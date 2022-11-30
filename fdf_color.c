@@ -6,9 +6,11 @@
 /*   By: javigarc <javigarc@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:28:25 by javigarc          #+#    #+#             */
-/*   Updated: 2022/11/30 15:30:51 by javigarc         ###   ########.fr       */
+/*   Updated: 2022/11/30 15:35:21 by javigarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "fdf.h"
 
 double	ft_percent(int start, int end, int current)
 {
