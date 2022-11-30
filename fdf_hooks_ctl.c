@@ -6,7 +6,7 @@
 /*   By: javigarc <javigarc@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:29:57 by javigarc          #+#    #+#             */
-/*   Updated: 2022/11/30 15:30:01 by javigarc         ###   ########.fr       */
+/*   Updated: 2022/11/30 15:56:57 by javigarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_key_press(int key, t_fdfdata *fdata)
 {
 	if (key == 53)
 	{
-		fdata = NULL;
+		ft_free_map(fdata);
 		ft_putstr_fd("\rTerminating.\nOK.", 1);
 		exit(0);
 	}
@@ -36,7 +36,7 @@ int	ft_key_press(int key, t_fdfdata *fdata)
 
 int	ft_button_close(t_fdfdata *fdata)
 {
-	fdata = NULL;
+	ft_free_map(fdata);
 	ft_putstr_fd("\rProgram terminated successfully", 1);
 	exit(0);
 	return (0);

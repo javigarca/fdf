@@ -6,7 +6,7 @@
 /*   By: javigarc <javigarc@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:27:45 by javigarc          #+#    #+#             */
-/*   Updated: 2022/11/30 15:27:56 by javigarc         ###   ########.fr       */
+/*   Updated: 2022/11/30 15:43:43 by javigarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ typedef struct s_fdfdata
 void	ft_fdfdata_init(t_fdfdata *fdata);
 void	ft_hookmods_init(t_fdfdata *fdata);
 void	ft_set_maxmin_hz(t_fdfdata *fdata, int rows, int cols);
+void	ft_free_map(t_fdfdata *fdata);
 // Map //
 t_map	ft_read_map(char *namefile);
 t_dot	**ft_load_mapdots(int fd, int rows, int cols);

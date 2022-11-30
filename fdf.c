@@ -6,7 +6,7 @@
 /*   By: javigarc <javigarc@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:27:03 by javigarc          #+#    #+#             */
-/*   Updated: 2022/11/30 15:27:27 by javigarc         ###   ########.fr       */
+/*   Updated: 2022/11/30 15:55:12 by javigarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ int	main(int argc, char **argv)
 void	ft_fdfdata_init(t_fdfdata *fdata)
 {
 	fdata->mlx = mlx_init();
-	fdata->win_size.rowx = 1600;
-	fdata->win_size.coly = 900;
-	fdata->img_size.rowx = 1280;
-	fdata->img_size.coly = 900;
+	fdata->win_size.rowx = 1920;
+	fdata->win_size.coly = 1080;
+	fdata->img_size.rowx = 1600;
+	fdata->img_size.coly = 1080;
 	fdata->win = mlx_new_window(fdata->mlx, fdata->win_size.rowx, \
 			fdata->win_size.coly, "FDF");
 	fdata->img = mlx_new_image(fdata->mlx, fdata->img_size.rowx, \
@@ -98,4 +98,17 @@ void	ft_set_maxmin_hz(t_fdfdata *fdata, int rows, int cols)
 		}
 		x++;
 	}
+}
+
+void	ft_free_map(t_fdfdata *fdata)
+{
+	int	x;
+
+	x = 0;
+	while (x < fdata->map.rowscols.rowx)
+	{
+		free(fdata->map.mapdots[x]);
+		x++;
+	}
+	free(fdata->map.mapdots);
 }
